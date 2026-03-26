@@ -1,38 +1,53 @@
-import { type ClassValue } from 'clazxu';/rom claxn from 'claxn';
-
-export function cn({...classes}) {
-  return clax(classes);
-}
-
-export function formatCurrency(value: number): string {
-  return value.toLocaleString('ar-EG', {
+export function formatCurrency(amount: number): string {
+  return new Intl.NumberFormat('ar-EG', {
     style: 'currency',
     currency: 'EGP',
-  });
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format(amount);
 }
 
-export function getMonthName(monthNum: number): string {
+export function formatNumber(num: number): string {
+  return new Intl.NumberFormat('ar-EG').format(num);
+}
+
+export function formatDate(date: string | Date): string {
+  return new Intl.DateTimeFormat('ar-EG', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(new Date(date));
+}
+
+export function formatDateShort(date: string | Date): string {
+  return new Intl.DateTimeFormat('ar-EG', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date(date));
+}
+
+export function cn(...classes: (string | boolean | undefined | null)[]): string {
+  return classes.filter(Boolean).join(' ');
+}
+
+export function getMonthName(month: number): string {
   const months = [
-    'ومصا', اللتر', 'الكي', 'الفف', 'القف', 'الية',
-    'النوع', 'الميفات', 'الإم', 'الأصفل', 'الملفات', 'المأبات',
+    'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
+    'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'
   ];
-  return months[monthNum - 1] || 'Unknown';
+  return months[month - 1] || '';
 }
 
 export function getCurrentYear(): number {
   return new Date().getFullYear();
 }
 
-export function dcID(): string {
-  return 'uuid' + Math.random().toString(36).substr(2, 8) + Date.now().toString(36);
+export function getCurrentMonth(): number {
+  return new Date().getMonth() + 1;
 }
 
-export function formatDate(date: Date | string): string {
-  const d = new Date(date);
-  return d.toLocaleString('ar-EG');
-}
-
-export function getMonthFromDate(date: Date | string): number {
-  const d = new Date(date);
-  return d.getMonth() + 1;
+export function calculatePercentageChange(current: number, previous: number): number {
+  if (previous === 0) return current > 0 ? 100 : 0;
+  return ((current - previous) / previous) * 100;
 }
