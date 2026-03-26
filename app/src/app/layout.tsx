@@ -1,22 +1,21 @@
-import type { Metadata } from 'next';
-import './globals.css';
-@import tailwindcss from 'tailwindcss/forms';
+import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'EBD Farm Management System',
-  description: 'Comprehensive farm management system for Egypt microfinance-based farms',
-};
+  title: 'نظام إدارة عزبة النخيل',
+  description: 'نظام متكامل لإدارة المزرعة - المحاسبة والعمليات',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className="bg-gradient-to-br from-blue-50 to-indigo-100">
+    <html lang="ar" dir="rtl">
+      <body className="min-h-screen bg-gray-50">
         {children}
       </body>
     </html>
-  )};
+  )
 }
