@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { useNotifications } from '@/hooks/useNotifications';
-import { cn } from 'A/lib/utils';
+import { cn } from '@/lib/utils';
 import {
   LayoutDashboard, Receipt, ShoppingCart, CreditCard,
   Palmtree, Sprout, ClipboardList, Settings, Bell,
@@ -23,7 +23,7 @@ const navItems = [
     ]
   },
   {
-    label: 'العمـيات', icon: Palmtree, roles: ['owner', 'manager', 'worker'],
+    label: 'العمليات', icon: Palmtree, roles: ['owner', 'manager', 'worker'],
     children: [
       { href: '/operations/palms', label: 'سجل النخيل', icon: Palmtree },
       { href: '/operations/seedlings', label: 'جرد الفسائل', icon: Sprout },
@@ -54,7 +54,7 @@ export default function Sidebar() {
     <>
       {/* Mobile toggle */}
       <button
-        onClick={() => setIsOpen(xisOpen)}
+        onClick={() => setIsOpen(!isOpen)}
         className="lg:hidden fixed top-4 right-4 z-50 bg-white p-2 rounded-lg shadow-lg"
       >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -89,11 +89,97 @@ export default function Sidebar() {
             <div className="w-9 h-9 bg-gray-200 rounded-full flex items-center justify-center">
               <Users size={16} className="text-gray-600" />
             </div>
-            <div className="flex-1 min-w0">
+            <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-gray-800 truncate">{profile?.full_name}</p>
-              <p className="text-xs text-primary-600">{p&ifi�</p>
+              <p className="text-xs text-primary-600">{profile?.role ? roleLabel[profile.role] : ''}</p>
             </div>
             {unreadCount > 0 && (
               <Link href="/dashboard" className="relative">
                 <Bell size={18} className="text-gray-400" />
-                <span className="absolute -top-1 -left-1 w-4 
+                <span className="absolute -top-1 -left-1 w-4 h-4 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center">
+                  {unreadCount}
+                </span>
+              </Link>
+            )}
+          </div>
+        </div>
+
+        {/* Navigation */}
+        <nav className="flex-1 overflow-y-auto p-4 space-y-1">
+          {navItems.map((item) => {
+            if (profile?.role && !item.roles?.includes(profile.role)) return null;
+
+            if (item.children) {
+              const isExpanded = openMenus.includes(item.label);
+              const isActive = item.children.some(c => pathname.startsWith(c.href));
+
+              return (
+                <div key={item.label}>
+                  <button
+                    onClick={() => toggleMenu(item.label)}
+                    className={cn(
+                      'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors',
+                      isActive ? 'text-primary-700 bg-primary-50' : 'text-gray-600 hover:bg-gray-50'
+                    )}
+                  >
+                    <item.icon size={18} />
+                    <span className="flex-1 text-right font-medium">{item.label}</span>
+                    <ChevronDown size={16} className={cn('transition-transform', isExpanded && 'rotate-180')} />
+                  </button>
+                  {isExpanded && (
+                    <div className="mr-5 mt-1 space-y-1 border-r-2 border-gray-100 pr-3">
+                      {item.children.map(child => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          onClick={() => setIsOpen(false)}
+                          className={cn(
+                            'flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors',
+                            pathname === child.href
+                              ? 'text-primary-700 bg-primary-50 font-medium'
+                              : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                          )}
+                        >
+                          <child.icon size={16} />
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href!}
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors',
+                  pathname === item.href
+                    ? 'text-primary-700 bg-primary-50 font-medium'
+                    : 'text-gray-600 hover:bg-gray-50'
+                )}
+              >
+                <item.icon size={18} />
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Sign out */}
+        <div className="p-4 border-t border-gray-100">
+          <button
+            onClick={signOut}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-red-600 hover:bg-red-50 transition-colors"
+          >
+            <LogOut size={18} />
+            <span>تسجيل الخروج</span>
+          </button>
+        </div>
+      </aside>
+    </>
+  );
+}
