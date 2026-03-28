@@ -685,7 +685,7 @@ function Weather() {
     if (code <= 67) return '🌧️';
     if (code <= 77) return '❄️';
     if (code <= 82) return '🌦️';
-    return '⛈️';
+    return '⟈️';
   };
 
   const days = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
