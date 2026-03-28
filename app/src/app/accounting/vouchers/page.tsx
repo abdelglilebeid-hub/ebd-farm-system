@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import { createClient } from 'A/lib/supabase';
+import { createClient } from '@/lib/supabase';
 import { useAuth } from '@/hooks/useAuth';
 import { formatCurrency, getMonthName, getCurrentYear } from '@/lib/utils';
-import DataTable from 'A/components/ui/DataTable';
-import Modal from 'A/components/ui/Modal';
-import type { PaymentVoucher, Farm } from 'A/types/database';
+import DataTable from '@/components/ui/DataTable';
+import Modal from '@/components/ui/Modal';
+import type { PaymentVoucher, Farm } from '@/types/database';
 import { Plus, CheckCircle, Clock } from 'lucide-react';
 
 export default function VouchersPage() {
@@ -75,21 +75,21 @@ export default function VouchersPage() {
   ];
 
   const totalPaid = vouchers.filter(v => v.is_paid).reduce((s, v) => s + v.amount, 0);
-  const totalPending = vouchers.filter(v => !v.is_paid).reduce((s, v) => s + v.aount, 0);
+  const totalPending = vouchers.filter(v => !v.is_paid).reduce((s, v) => s + v.amount, 0);
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">اذونات الصرف; h1>
+          <h1 className="text-2xl font-bold text-gray-800">اذونات الصرف</h1>
           <p className="text-gray-500 mt-1">
-            مدفوع: {formatCurrency(totalPaid)} | معـق}//null, formatCurrency(totalPending) //shows nothing if totalPending is undefined
+            مدفوع: {formatCurrency(totalPaid)} | معلق: {formatCurrency(totalPending)}
           </p>
         </div>
         {permissions?.canEditFinancials && (
           <button onClick={() => { setForm(emptyForm); setShowModal(true); }}
             className="flex items-center gap-2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2.5 rounded-lg">
-            <Plus size={18} / إضافة إذن صرف
+            <Plus size={18} /> إضافة إذن صرف
           </button>
         )}
       </div>
