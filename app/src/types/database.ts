@@ -12,7 +12,7 @@ export type LaborType =
   | 'لم ثمار' | 'عمل جور' | 'تشعيب' | 'ولد لام ثمار' | 'جمع ليمون'
   | 'زراعه ثوم راجل' | 'زراعه ثوم ولد' | 'حفر وتنزيل خدمه'
   | 'غسيل خراطيم' | 'لم قص' | 'دهان شجره' | 'شيل سرطانات'
-  | 'تقليم' | 'تأبير', 'تنظيف عراجين' | 'حصاد' | 'اخري';
+  | 'تقليم' | 'تأبير' | 'تنظيف عراجين' | 'حصاد' | 'اخري';
 
 export type SaleMethod = 'نقدي' | 'آجل' | 'شيك' | 'تحويل';
 export type NotificationType = 'budget_alert' | 'task_due' | 'payment_due' | 'inventory_low' | 'general';
@@ -211,7 +211,7 @@ export const ROLE_PERMISSIONS: Record<UserRole, {
   owner: {
     label: 'مالك',
     canViewFinancials: true,
-  c  canEditFinancials: true,
+    canEditFinancials: true,
     canManageFarms: true,
     canManageUsers: true,
     canApproveExpenses: true,
