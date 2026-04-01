@@ -17,8 +17,8 @@ const C = {
 };
 
 const SECTOR_COLORS: Record<string, string> = {
-  'Ø§Ù 22 ÙØ¯Ø§Ù': C.gold, 'Ø­ÙØ¶ Ø§ÙØ¨Ø§Ø¨ÙØ±': C.red, 'Ø§ÙØ­ØµÙÙ': C.green,
-  'Ø§ÙØ´ÙØ¹Ù': C.teal, 'Ø§ÙØ®Ø·Ø§Ø±Ø©': C.purple, 'Ø§ÙØ®Ø·Ø§Ø±Ù': C.purple,
+  'ال 22 فدان': C.gold, 'حوض البابور': C.red, 'الحصوه': C.green,
+  'الشفعه': C.teal, 'الخطارة': C.purple, 'الخطاره': C.purple,
 };
 
 // ====== STATIC DATA (financial summaries) ======
@@ -35,67 +35,67 @@ const YEARLY_DATA = [
 ];
 
 const SECTOR_PERF_2025 = [
-  { name: 'Ø§ÙÙ 22 ÙØ¯Ø§Ù', area: 22, revenue: 4016879, costs: 1167155, color: C.gold },
-  { name: 'Ø­ÙØ¶ Ø§ÙØ¨Ø§Ø¨ÙØ±', area: 30.5, revenue: 1425979, costs: 1158352, color: C.red },
-  { name: 'Ø§ÙØ­ØµÙÙ', area: 30, revenue: 1018300, costs: 972820, color: C.green },
-  { name: 'Ø§ÙØ®Ø·Ø§Ø±Ø©', area: 23, revenue: 814398, costs: 859744, color: C.purple },
-  { name: 'Ø§ÙØ´ÙØ¹Ù', area: 9.5, revenue: 409392, costs: 284062, color: C.teal },
+  { name: 'الـ 22 فدان', area: 22, revenue: 4016879, costs: 1167155, color: C.gold },
+  { name: 'حوض البابور', area: 30.5, revenue: 1425979, costs: 1158352, color: C.red },
+  { name: 'الحصوه', area: 30, revenue: 1018300, costs: 972820, color: C.green },
+  { name: 'الخطارة', area: 23, revenue: 814398, costs: 859744, color: C.purple },
+  { name: 'الشفعه', area: 9.5, revenue: 409392, costs: 284062, color: C.teal },
 ];
 
 const REV_COMPOSITION_2025 = [
-  { name: 'Ø¨ÙØ­ Ø¨Ø±Ø­Ù', value: 4807166, pct: 62.6, color: C.gold },
-  { name: 'Ø¨ÙØ¬Ø±', value: 2308067, pct: 30.0, color: C.green },
-  { name: 'Ø°Ø±Ø©', value: 441805, pct: 5.7, color: '#f97316' },
-  { name: 'ÙØ§ÙØ¬Ù', value: 58109, pct: 0.8, color: C.muted },
-  { name: 'Ø£Ø®Ø±Ù', value: 69800, pct: 0.9, color: C.dim },
+  { name: 'بلح برحي', value: 4807166, pct: 62.6, color: C.gold },
+  { name: 'بنجر', value: 2308067, pct: 30.0, color: C.green },
+  { name: 'ذرة', value: 441805, pct: 5.7, color: '#f97316' },
+  { name: 'مانجو', value: 58109, pct: 0.8, color: C.muted },
+  { name: 'أخرى', value: 69800, pct: 0.9, color: C.dim },
 ];
 
 const PALM_DATA = {
   sectors: [
-    { name: 'Ø§ÙÙ 22 ÙØ¯Ø§Ù', area: '22 ÙØ¯Ø§Ù', plots: 7, palms: 948, males: 25, color: C.gold,
+    { name: 'الـ 22 فدان', area: '22 فدان', plots: 7, palms: 948, males: 25, color: C.gold,
       hawshat: [
-        { name: 'Ø­ÙØ´Ø© 1 (4Ù)', area: '4 ÙØ¯Ø§Ù', palms: 194, males: 0, spacing: '9Ã9', planted: 'Ø£Ø¨Ø±ÙÙ 2019' },
-        { name: 'Ø­ÙØ´Ø© 1 (18Ù)', area: '3Ù 6Ù', palms: 134, males: 11, spacing: '8Ã12', planted: 'Ø£ÙØªÙØ¨Ø± 2018' },
-        { name: 'Ø­ÙØ´Ø© 2', area: '3Ù 3Ù', palms: 130, males: 0, spacing: '8Ã12', planted: 'Ø£ÙØªÙØ¨Ø± 2018' },
-        { name: 'Ø­ÙØ´Ø© 3', area: '2Ù 20Ù', palms: 120, males: 6, spacing: '8Ã12', planted: 'Ø£ÙØªÙØ¨Ø± 2018' },
-        { name: 'Ø­ÙØ´Ø© 4', area: '2Ù 20Ù', palms: 120, males: 0, spacing: '8Ã12', planted: 'Ø£ÙØªÙØ¨Ø± 2018' },
-        { name: 'Ø­ÙØ´Ø© 5', area: '2Ù 20Ù', palms: 120, males: 3, spacing: '8Ã12', planted: 'Ø£ÙØªÙØ¨Ø± 2018' },
-        { name: 'Ø­ÙØ´Ø© 6', area: '3Ù 3Ù', palms: 130, males: 5, spacing: '8Ã12', planted: 'Ø£ÙØªÙØ¨Ø± 2018' },
+        { name: 'حوشة 1 (4ف)', area: '4 فدان', palms: 194, males: 0, spacing: '9×9', planted: 'أبريل 2019' },
+        { name: 'حوشة 1 (18ف)', area: '3ف 6ق', palms: 134, males: 11, spacing: '8×12', planted: 'أكتوبر 2018' },
+        { name: 'حوشة 2', area: '3ف 3ق', palms: 130, males: 0, spacing: '8×12', planted: 'أكتوبر 2018' },
+        { name: 'حوشة 3', area: '2ف 20ق', palms: 120, males: 6, spacing: '8×12', planted: 'أكتوبر 2018' },
+        { name: 'حوشة 4', area: '2ف 20ق', palms: 120, males: 0, spacing: '8×12', planted: 'أكتوبر 2018' },
+        { name: 'حوشة 5', area: '2ف 20ق', palms: 120, males: 3, spacing: '8×12', planted: 'أكتوبر 2018' },
+        { name: 'حوشة 6', area: '3ف 3ق', palms: 130, males: 5, spacing: '8×12', planted: 'أكتوبر 2018' },
       ]},
-    { name: 'Ø­ÙØ¶ Ø§ÙØ¨Ø§Ø¨ÙØ±', area: '30.5 ÙØ¯Ø§Ù', plots: 5, palms: 1485, males: 91, color: C.red,
+    { name: 'حوض البابور', area: '30.5 فدان', plots: 5, palms: 1485, males: 91, color: C.red,
       hawshat: [
-        { name: 'Ø­ÙØ´Ø© 1', area: '6Ù', palms: 276, males: 58, spacing: '8Ã10', planted: 'ÙÙÙÙÙ 2023' },
-        { name: 'Ø­ÙØ´Ø© 2', area: '7Ù 14Ù', palms: 347, males: 16, spacing: '8Ã10', planted: 'ÙÙÙÙÙ 2023' },
-        { name: 'Ø­ÙØ´Ø© 3', area: '7Ù 12Ù', palms: 428, males: 17, spacing: '8Ã9', planted: 'ÙÙÙÙÙ 2023' },
-        { name: 'Ø­ÙØ´Ø© 4', area: '4Ù 10Ù', palms: 203, males: 0, spacing: '8Ã10', planted: 'ÙÙÙÙÙ 2025' },
-        { name: 'Ø­ÙØ´Ø© 5', area: '5Ù', palms: 231, males: 0, spacing: '8Ã10', planted: 'ÙÙÙÙÙ 2025' },
+        { name: 'حوشة 1', area: '6ف', palms: 276, males: 58, spacing: '8×10', planted: 'يونيو 2023' },
+        { name: 'حوشة 2', area: '7ف 14ق', palms: 347, males: 16, spacing: '8×10', planted: 'يونيو 2023' },
+        { name: 'حوشة 3', area: '7ف 12ق', palms: 428, males: 17, spacing: '8×9', planted: 'يونيو 2023' },
+        { name: 'حوشة 4', area: '4ف 10ق', palms: 203, males: 0, spacing: '8×10', planted: 'يوليو 2025' },
+        { name: 'حوشة 5', area: '5ف', palms: 231, males: 0, spacing: '8×10', planted: 'يوليو 2025' },
       ]},
-    { name: 'Ø§ÙØ­ØµÙÙ', area: '30 ÙØ¯Ø§Ù', plots: 8, palms: 1015, males: 80, color: C.green,
+    { name: 'الحصوه', area: '30 فدان', plots: 8, palms: 1015, males: 80, color: C.green,
       hawshat: [
-        { name: 'Ø¹ÙØ§ÙØ© 1', area: '3Ù 8Ù', palms: 160, males: 16, spacing: '9Ã10', planted: 'ÙÙÙÙÙ 2022' },
-        { name: 'Ø¹ÙØ§ÙØ© 2', area: '3Ù 14Ù', palms: 170, males: 16, spacing: '9Ã10', planted: 'ÙÙÙÙÙ 2022' },
-        { name: 'Ø¹ÙØ§ÙØ© 3', area: '3Ù 14Ù', palms: 170, males: 16, spacing: '9Ã10', planted: 'ÙÙÙÙÙ 2022' },
-        { name: 'Ø¹ÙØ§ÙØ© 4', area: '3Ù 12Ù', palms: 167, males: 0, spacing: '9Ã10', planted: 'ÙÙÙÙÙ 2022' },
-        { name: 'Ø­ØµÙÙ 1', area: '4Ù 15Ù', palms: 220, males: 0, spacing: '8Ã10', planted: 'ÙÙÙÙÙ 2025' },
-        { name: 'Ø­ØµÙÙ 2', area: '4Ù 11Ù', palms: 212, males: 16, spacing: '8Ã10', planted: 'ÙÙÙÙÙ 2025' },
+        { name: 'عوامة 1', area: '3ف 8ق', palms: 160, males: 16, spacing: '9×10', planted: 'يونيو 2022' },
+        { name: 'عوامة 2', area: '3ف 14ق', palms: 170, males: 16, spacing: '9×10', planted: 'يونيو 2022' },
+        { name: 'عوامة 3', area: '3ف 14ق', palms: 170, males: 16, spacing: '9×10', planted: 'يونيو 2022' },
+        { name: 'عوامة 4', area: '3ف 12ق', palms: 167, males: 0, spacing: '9×10', planted: 'يونيو 2022' },
+        { name: 'حصوه 1', area: '4ف 15ق', palms: 220, males: 0, spacing: '8×10', planted: 'يوليو 2025' },
+        { name: 'حصوه 2', area: '4ف 11ق', palms: 212, males: 16, spacing: '8×10', planted: 'يوليو 2025' },
       ]},
-    { name: 'Ø§ÙØ´ÙØ¹Ù', area: '9.5 ÙØ¯Ø§Ù', plots: 4, palms: 269, males: 103, color: C.teal,
+    { name: 'الشفعه', area: '9.5 فدان', plots: 4, palms: 269, males: 103, color: C.teal,
       hawshat: [
-        { name: 'Ø­ÙØ´Ø© 1', area: '2Ù 1Ù', palms: 118, males: 0, spacing: '8Ã9', planted: 'ÙÙÙÙÙ 2023' },
-        { name: 'Ø­ÙØ´Ø© 2', area: '2Ù 14Ù', palms: 151, males: 36, spacing: '8Ã9', planted: 'ÙÙÙÙÙ 2023' },
+        { name: 'حوشة 1', area: '2ف 1ق', palms: 118, males: 0, spacing: '8×9', planted: 'يونيو 2023' },
+        { name: 'حوشة 2', area: '2ف 14ق', palms: 151, males: 36, spacing: '8×9', planted: 'يونيو 2023' },
       ]},
-    { name: 'Ø§ÙØ®Ø·Ø§Ø±Ø©', area: '23 ÙØ¯Ø§Ù', plots: 4, palms: 513, males: 0, color: C.purple,
+    { name: 'الخطارة', area: '23 فدان', plots: 4, palms: 513, males: 0, color: C.purple,
       hawshat: [
-        { name: 'Ø§ÙÙØ´Ø§ÙØ©', area: '-', palms: 56, males: 0, spacing: '8.5Ã10', planted: 'ÙØ§Ø±Ø³ 2010' },
-        { name: 'ÙØ­Ø¨Ø³ 1', area: '-', palms: 134, males: 0, spacing: '8.5Ã10', planted: '2019-2020' },
-        { name: 'ÙØ­Ø¨Ø³ 2', area: '-', palms: 154, males: 0, spacing: '8.5Ã10', planted: '2022-2023' },
-        { name: 'ÙØ­Ø¨Ø³ 3', area: '-', palms: 169, males: 0, spacing: '8.5Ã10', planted: 'ÙØ§ÙÙ 2024' },
+        { name: 'المشاية', area: '-', palms: 56, males: 0, spacing: '8.5×10', planted: 'مارس 2010' },
+        { name: 'محبس 1', area: '-', palms: 134, males: 0, spacing: '8.5×10', planted: '2019-2020' },
+        { name: 'محبس 2', area: '-', palms: 154, males: 0, spacing: '8.5×10', planted: '2022-2023' },
+        { name: 'محبس 3', area: '-', palms: 169, males: 0, spacing: '8.5×10', planted: 'مايو 2024' },
       ]},
   ],
 };
 
 const COST_CATEGORIES = {
-  labels: ['ÙØ±ØªØ¨Ø§Øª', 'Ø¹ÙØ§ÙØ©', 'Ø£Ø³ÙØ¯Ø©', 'ÙØ´ØªØ±ÙØ§Øª', 'ÙØ¹Ø¯Ø§Øª', 'ØµÙØ§ÙØ©', 'ÙÙØ±Ø¨Ø§Ø¡', 'Ø¶ÙØ§ÙØ©', 'Ø£Ø®Ø±Ù', 'Ø¨ÙØ¬Ø±', 'Ø°Ø±Ø©'],
+  labels: ['مرتبات', 'عمالة', 'أسمدة', 'مشتريات', 'معدات', 'صيانة', 'كهرباء', 'ضيافة', 'أخرى', 'بنجر', 'ذرة'],
   colors: [C.blue, C.gold, C.green, C.red, '#f97316', C.teal, C.purple, '#ec4899', C.dim, '#84cc16', '#a855f7'],
   data: {
     2019: [430250, 269575, 754113, 386800, 74250, 109781, 24590, 9861, 43580, 0, 0],
@@ -112,14 +112,14 @@ const fmt = (n: number) => new Intl.NumberFormat('ar-EG').format(Math.round(n));
 const fmtM = (n: number) => `${(n / 1000000).toFixed(1)}M`;
 
 const PAGES = [
-  { id: 'sectors', label: 'ð ØªØ­ÙÙÙ Ø§ÙÙØ·Ø§Ø¹Ø§Øª' },
-  { id: 'details', label: 'ð´ ØªÙØ§ØµÙÙ Ø§ÙÙØ·Ø§Ø¹Ø§Øª' },
-  { id: 'costs', label: 'ð° Ø§ÙØªÙØ§ÙÙÙ ÙØ§ÙÙÙØ§Ø¡Ø©' },
-  { id: 'expenses', label: 'ð Ø³Ø¬Ù Ø§ÙÙØµØ§Ø±ÙÙ' },
-  { id: 'seedlings', label: 'ð± Ø§ÙÙØ³Ø§Ø¦Ù' },
-  { id: 'scorecard', label: 'ð Ø¨Ø·Ø§ÙØ© Ø§ÙØ£Ø¯Ø§Ø¡' },
-  { id: 'outlook', label: 'ð® Ø§ÙÙØ¸Ø±Ø© Ø§ÙÙØ³ØªÙØ¨ÙÙØ©' },
-  { id: 'weather', label: 'ð¤ï¸ Ø§ÙØ·ÙØ³' },
+  { id: 'sectors', label: '📊 تحليل القطاعات' },
+  { id: 'details', label: '🌴 تفاصيل القطاعات' },
+  { id: 'costs', label: '💰 التكاليف والكفاءة' },
+  { id: 'expenses', label: '📝 سجل المصاريف' },
+  { id: 'seedlings', label: '🌱 الفسائل' },
+  { id: 'scorecard', label: '📋 بطاقة الأداء' },
+  { id: 'outlook', label: '🔮 النظرة المستقبلية' },
+  { id: 'weather', label: '🌤️ الطقس' },
 ];
 
 // ====== COMPONENTS ======
@@ -135,7 +135,7 @@ function KPICard({ label, value, sub, subColor = C.green }: { label: string; val
 
 function StatusBadge({ profit }: { profit: number }) {
   const c = profit > 50000 ? C.green : profit > -50000 ? C.gold : C.red;
-  const label = profit > 50000 ? 'Ø±Ø§Ø¨Ø­' : profit > -50000 ? 'ÙØªØ¹Ø§Ø¯Ù' : 'Ø®Ø§Ø³Ø±';
+  const label = profit > 50000 ? 'رابح' : profit > -50000 ? 'متعادل' : 'خاسر';
   return <span style={{ background: c + '22', color: c, padding: '4px 12px', borderRadius: 20, fontSize: 12, fontWeight: 600 }}>{label}</span>;
 }
 
@@ -152,36 +152,36 @@ function SectionCard({ title, subtitle, children }: { title: string; subtitle?: 
 // ====== PAGE: SECTOR ANALYSIS ======
 function SectorAnalysis() {
   const d2025 = YEARLY_DATA.find(d => d.year === 2025)!;
-  const revenueData = YEARLY_DATA.map(d => ({ year: d.year, Ø¥ÙØ±Ø§Ø¯Ø§Øª: d.revenue, ØªÙØ§ÙÙÙ: d.costs, Ø±Ø¨Ø­: d.revenue - d.costs }));
+  const revenueData = YEARLY_DATA.map(d => ({ year: d.year, إيرادات: d.revenue, تكاليف: d.costs, ربح: d.revenue - d.costs }));
   const totalRev = YEARLY_DATA.reduce((s, d) => s + d.revenue, 0);
 
   return (
     <div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 24 }}>
-        <KPICard label="Ø¥Ø¬ÙØ§ÙÙ Ø§ÙØ¥ÙØ±Ø§Ø¯Ø§Øª 2025" value={`${fmt(d2025.revenue)} Ø¬.Ù`} sub="â +63.9% Ø³ÙÙÙ" />
-        <KPICard label="ØµØ§ÙÙ Ø§ÙØ±Ø¨Ø­ 2025" value={`${fmt(d2025.revenue - d2025.costs)} Ø¬.Ù`} sub="â 42.2% Ø§ÙÙØ§ÙØ´" />
-        <KPICard label="Ø¥ÙØ±Ø§Ø¯ / ÙØ¯Ø§Ù" value={`${fmt(d2025.revenue / 115)} Ø¬.Ù`} sub="115 ÙØ¯Ø§Ù Ø¥Ø¬ÙØ§ÙÙ" subColor={C.muted} />
-        <KPICard label="Ø§ÙØ¥ÙØ±Ø§Ø¯Ø§Øª Ø§ÙØªØ±Ø§ÙÙÙØ©" value={`${fmt(totalRev)} Ø¬.Ù`} sub="2017-2025" subColor={C.muted} />
+        <KPICard label="إجمالي الإيرادات 2025" value={`${fmt(d2025.revenue)} ج.م`} sub="↑ +63.9% سنوي" />
+        <KPICard label="صافي الربح 2025" value={`${fmt(d2025.revenue - d2025.costs)} ج.م`} sub="↑ 42.2% الهامش" />
+        <KPICard label="إيراد / فدان" value={`${fmt(d2025.revenue / 115)} ج.م`} sub="115 فدان إجمالي" subColor={C.muted} />
+        <KPICard label="الإيرادات التراكمية" value={`${fmt(totalRev)} ج.م`} sub="2017-2025" subColor={C.muted} />
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 24 }}>
-        <SectionCard title="ÙØ³Ø§Ø± Ø§ÙØ¥ÙØ±Ø§Ø¯Ø§Øª 2017-2025" subtitle="">
+        <SectionCard title="مسار الإيرادات 2017-2025" subtitle="">
           <ResponsiveContainer width="100%" height={280}>
             <ComposedChart data={revenueData}>
               <CartesianGrid stroke={C.border} strokeDasharray="3 3" />
               <XAxis dataKey="year" tick={{ fill: C.muted, fontSize: 11 }} />
               <YAxis tick={{ fill: C.muted, fontSize: 11 }} tickFormatter={v => fmtM(v)} />
               <Tooltip contentStyle={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 8, color: C.text }}
-                formatter={(v: number) => `${fmt(v)} Ø¬.Ù`} />
-              <Area dataKey="Ø±Ø¨Ø­" fill={C.green + '33'} stroke={C.green} />
-              <Line dataKey="Ø¥ÙØ±Ø§Ø¯Ø§Øª" stroke={C.gold} strokeWidth={3} dot={{ r: 4 }} />
-              <Line dataKey="ØªÙØ§ÙÙÙ" stroke={C.red} strokeWidth={2} strokeDasharray="5 5" />
+                formatter={(v: number) => `${fmt(v)} ج.م`} />
+              <Area dataKey="ربح" fill={C.green + '33'} stroke={C.green} />
+              <Line dataKey="إيرادات" stroke={C.gold} strokeWidth={3} dot={{ r: 4 }} />
+              <Line dataKey="تكاليف" stroke={C.red} strokeWidth={2} strokeDasharray="5 5" />
               <Legend />
             </ComposedChart>
           </ResponsiveContainer>
         </SectionCard>
 
-        <SectionCard title="ØªØ±ÙÙØ¨Ø© Ø§ÙØ¥ÙØ±Ø§Ø¯Ø§Øª 2025" subtitle="">
+        <SectionCard title="تركيبة الإيرادات 2025" subtitle="">
           <ResponsiveContainer width="100%" height={280}>
             <PieChart>
               <Pie data={REV_COMPOSITION_2025} dataKey="value" nameKey="name" cx="50%" cy="50%"
@@ -191,17 +191,17 @@ function SectorAnalysis() {
                 {REV_COMPOSITION_2025.map((e, i) => <Cell key={i} fill={e.color} />)}
               </Pie>
               <Tooltip contentStyle={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 8, color: C.text }}
-                formatter={(v: number) => `${fmt(v)} Ø¬.Ù`} />
+                formatter={(v: number) => `${fmt(v)} ج.م`} />
             </PieChart>
           </ResponsiveContainer>
         </SectionCard>
       </div>
 
-      <SectionCard title="Ø£Ø¯Ø§Ø¡ Ø§ÙÙØ·Ø§Ø¹Ø§Øª 2025" subtitle="">
+      <SectionCard title="أداء القطاعات 2025" subtitle="">
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
           <thead>
             <tr style={{ borderBottom: `1px solid ${C.border}` }}>
-              {['Ø§ÙÙØ·Ø§Ø¹', 'Ø§ÙÙØ³Ø§Ø­Ø©', 'Ø§ÙØ¥ÙØ±Ø§Ø¯Ø§Øª', 'Ø§ÙØªÙØ§ÙÙÙ', 'Ø§ÙØ±Ø¨Ø­', 'Ø±Ø¨Ø­/ÙØ¯Ø§Ù', 'Ø§ÙØ­Ø§ÙØ©'].map(h =>
+              {['القطاع', 'المساحة', 'الإيرادات', 'التكاليف', 'الربح', 'ربح/فدان', 'الحالة'].map(h =>
                 <th key={h} style={{ padding: '10px 12px', textAlign: 'right', color: C.muted, fontWeight: 500 }}>{h}</th>
               )}
             </tr>
@@ -215,7 +215,7 @@ function SectorAnalysis() {
                     <span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: '50%', background: s.color, marginLeft: 8 }} />
                     {s.name}
                   </td>
-                  <td style={{ padding: '10px 12px', color: C.muted }}>{s.area} ÙØ¯Ø§Ù</td>
+                  <td style={{ padding: '10px 12px', color: C.muted }}>{s.area} فدان</td>
                   <td style={{ padding: '10px 12px', color: C.green }}>{fmt(s.revenue)}</td>
                   <td style={{ padding: '10px 12px', color: C.red }}>{fmt(s.costs)}</td>
                   <td style={{ padding: '10px 12px', color: profit >= 0 ? C.green : C.red, fontWeight: 600 }}>{fmt(profit)}</td>
@@ -238,10 +238,10 @@ function SectorDetails() {
   return (
     <div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 24 }}>
-        <KPICard label="Ø¥Ø¬ÙØ§ÙÙ Ø§ÙÙØ³Ø§Ø­Ø©" value="115 ÙØ¯Ø§Ù" sub="5 ÙØ·Ø§Ø¹Ø§Øª" subColor={C.muted} />
-        <KPICard label="ÙØ®ÙÙ Ø¨Ø±Ø­Ù" value={`${fmt(4230)}`} sub="Ø¥ÙØªØ§Ø¬ ØªÙÙØ±" subColor={C.green} />
-        <KPICard label="ÙØ®ÙÙ Ø°ÙÙØ±" value={`${fmt(299)}`} sub="ØªÙÙÙØ­" subColor={C.gold} />
-        <KPICard label="Ø­ÙØ´Ø§Øª" value="28" sub="ÙØ­Ø¯Ø© Ø¥Ø¯Ø§Ø±ÙØ©" subColor={C.muted} />
+        <KPICard label="إجمالي المساحة" value="115 فدان" sub="5 قطاعات" subColor={C.muted} />
+        <KPICard label="نخيل برحي" value={`${fmt(4230)}`} sub="إنتاج تمور" subColor={C.green} />
+        <KPICard label="نخيل ذكور" value={`${fmt(299)}`} sub="تلقيح" subColor={C.gold} />
+        <KPICard label="حوشات" value="28" sub="وحدة إدارية" subColor={C.muted} />
       </div>
 
       {PALM_DATA.sectors.map(sector => (
@@ -255,16 +255,16 @@ function SectorDetails() {
           >
             <div>
               <div style={{ color: C.text, fontSize: 16, fontWeight: 700 }}>{sector.name}</div>
-              <div style={{ color: C.muted, fontSize: 12, marginTop: 4 }}>{sector.area} | {sector.plots} Ø­ÙØ´Ø§Øª | {sector.palms} ÙØ®ÙØ© | {sector.males} Ø°ÙÙØ±</div>
+              <div style={{ color: C.muted, fontSize: 12, marginTop: 4 }}>{sector.area} | {sector.plots} حوشات | {sector.palms} نخلة | {sector.males} ذكور</div>
             </div>
-            <span style={{ color: C.muted, fontSize: 18 }}>{expanded === sector.name ? 'â²' : 'â¼'}</span>
+            <span style={{ color: C.muted, fontSize: 18 }}>{expanded === sector.name ? '▲' : '▼'}</span>
           </div>
           {expanded === sector.name && (
             <div style={{ padding: '0 20px 20px' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
                 <thead>
                   <tr style={{ borderBottom: `1px solid ${C.border}` }}>
-                    {['Ø§ÙØ­ÙØ´Ø©', 'Ø§ÙÙØ³Ø§Ø­Ø©', 'ÙØ®ÙÙ', 'Ø°ÙÙØ±', 'Ø§ÙÙØ³Ø§ÙØ©', 'ØªØ§Ø±ÙØ® Ø§ÙØ²Ø±Ø§Ø¹Ø©'].map(h =>
+                    {['الحوشة', 'المساحة', 'نخيل', 'ذكور', 'المسافة', 'تاريخ الزراعة'].map(h =>
                       <th key={h} style={{ padding: '8px 10px', textAlign: 'right', color: C.muted }}>{h}</th>
                     )}
                   </tr>
@@ -319,20 +319,20 @@ function CostAnalysis() {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16, marginBottom: 24 }}>
-        <KPICard label="Ø¥Ø¬ÙØ§ÙÙ Ø§ÙØªÙØ§ÙÙÙ" value={`${fmt(totalCost)} Ø¬.Ù`} sub={`${selectedYear}`} subColor={C.red} />
-        <KPICard label="Ø¥Ø¬ÙØ§ÙÙ Ø§ÙØ¥ÙØ±Ø§Ø¯Ø§Øª" value={`${fmt(revenue)} Ø¬.Ù`} sub="" subColor={C.green} />
-        <KPICard label="ØµØ§ÙÙ Ø§ÙÙØ§ÙØ´" value={`${margin.toFixed(1)}%`} sub={margin > 20 ? 'ØµØ­Ù' : 'Ø¶Ø¹ÙÙ'} subColor={margin > 20 ? C.green : C.red} />
-        <KPICard label="Ø§ÙØªÙÙÙØ© / Ø§ÙØ¥ÙØ±Ø§Ø¯" value={costRatio.toFixed(2)} sub={costRatio <= 0.5 ? 'ÙÙØªØ§Ø²' : 'ÙÙØ¨ÙÙ'} subColor={costRatio <= 0.5 ? C.green : C.gold} />
+        <KPICard label="إجمالي التكاليف" value={`${fmt(totalCost)} ج.م`} sub={`${selectedYear}`} subColor={C.red} />
+        <KPICard label="إجمالي الإيرادات" value={`${fmt(revenue)} ج.م`} sub="" subColor={C.green} />
+        <KPICard label="صافي الهامش" value={`${margin.toFixed(1)}%`} sub={margin > 20 ? 'صحي' : 'ضعيف'} subColor={margin > 20 ? C.green : C.red} />
+        <KPICard label="التكلفة / الإيراد" value={costRatio.toFixed(2)} sub={costRatio <= 0.5 ? 'ممتاز' : 'مقبول'} subColor={costRatio <= 0.5 ? C.green : C.gold} />
       </div>
 
-      <SectionCard title={`ØªÙØ²ÙØ¹ Ø§ÙØªÙØ§ÙÙÙ ${selectedYear}`} subtitle="">
+      <SectionCard title={`توزيع التكاليف ${selectedYear}`} subtitle="">
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={costBreakdown} layout="vertical">
             <CartesianGrid stroke={C.border} strokeDasharray="3 3" />
             <XAxis type="number" tick={{ fill: C.muted, fontSize: 11 }} tickFormatter={v => fmtM(v)} />
             <YAxis type="category" dataKey="name" tick={{ fill: C.muted, fontSize: 11 }} width={80} />
             <Tooltip contentStyle={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 8, color: C.text }}
-              formatter={(v: number) => `${fmt(v)} Ø¬.Ù`} />
+              formatter={(v: number) => `${fmt(v)} ج.م`} />
             <Bar dataKey="value" radius={[0, 4, 4, 0]}>
               {costBreakdown.map((e, i) => <Cell key={i} fill={e.color} />)}
             </Bar>
@@ -340,12 +340,12 @@ function CostAnalysis() {
         </ResponsiveContainer>
       </SectionCard>
 
-      <SectionCard title="Ø§ÙØªØµØ§Ø¯ÙØ§Øª Ø§ÙÙØ­Ø§ØµÙÙ 2025" subtitle="">
+      <SectionCard title="اقتصاديات المحاصيل 2025" subtitle="">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
           {[
-            { name: 'Ø§ÙØ¨ÙØ¬Ø±', rev: 2308067, cost: 464925, color: C.green },
-            { name: 'Ø§ÙØ°Ø±Ø©', rev: 441805, cost: 139950, color: '#f97316' },
-            { name: 'Ø§ÙØ¨ÙØ­ Ø§ÙØ¨Ø±Ø­Ù', rev: 4807166, cost: 3837258, color: C.gold },
+            { name: 'البنجر', rev: 2308067, cost: 464925, color: C.green },
+            { name: 'الذرة', rev: 441805, cost: 139950, color: '#f97316' },
+            { name: 'البلح البرحي', rev: 4807166, cost: 3837258, color: C.gold },
           ].map(crop => {
             const profit = crop.rev - crop.cost;
             const margin = ((profit / crop.rev) * 100).toFixed(1);
@@ -353,10 +353,10 @@ function CostAnalysis() {
             return (
               <div key={crop.name} style={{ background: C.cardHover, borderRadius: 12, padding: 16, borderTop: `3px solid ${crop.color}` }}>
                 <div style={{ color: C.text, fontSize: 16, fontWeight: 700, marginBottom: 8 }}>{crop.name}</div>
-                <div style={{ color: C.green, fontSize: 13 }}>Ø¥ÙØ±Ø§Ø¯Ø§Øª: {fmt(crop.rev)} Ø¬.Ù</div>
-                <div style={{ color: C.red, fontSize: 13 }}>Ø§ÙØªÙÙÙØ©: ({fmt(crop.cost)}) Ø¬.Ù</div>
-                <div style={{ color: C.text, fontSize: 15, fontWeight: 700, marginTop: 8 }}>Ø§ÙØ±Ø¨Ø­: {fmt(profit)} Ø¬.Ù</div>
-                <div style={{ color: C.muted, fontSize: 11, marginTop: 4 }}>ÙØ§ÙØ´ {margin}% | Ø¹Ø§Ø¦Ø¯ {roi}%</div>
+                <div style={{ color: C.green, fontSize: 13 }}>إيرادات: {fmt(crop.rev)} ج.م</div>
+                <div style={{ color: C.red, fontSize: 13 }}>التكلفة: ({fmt(crop.cost)}) ج.م</div>
+                <div style={{ color: C.text, fontSize: 15, fontWeight: 700, marginTop: 8 }}>الربح: {fmt(profit)} ج.م</div>
+                <div style={{ color: C.muted, fontSize: 11, marginTop: 4 }}>هامش {margin}% | عائد {roi}%</div>
               </div>
             );
           })}
@@ -409,35 +409,35 @@ function ExpenseLog() {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 16 }}>
-        <KPICard label="Ø§ÙØ¥Ø¬ÙØ§ÙÙ" value={`${fmt(total)} Ø¬.Ù`} sub={`${year}`} subColor={C.red} />
-        <KPICard label="ØªÙÙÙØ©/ÙØ¯Ø§Ù" value={`${fmt(total / 115)} Ø¬.Ù`} sub="115 ÙØ¯Ø§Ù" subColor={C.muted} />
-        <KPICard label="Ø¹Ø¯Ø¯ Ø§ÙØ³Ø¬ÙØ§Øª" value={`${filtered.length}`} sub="ÙÙ Supabase" subColor={C.blue} />
+        <KPICard label="الإجمالي" value={`${fmt(total)} ج.م`} sub={`${year}`} subColor={C.red} />
+        <KPICard label="تكلفة/فدان" value={`${fmt(total / 115)} ج.م`} sub="115 فدان" subColor={C.muted} />
+        <KPICard label="عدد السجلات" value={`${filtered.length}`} sub="من Supabase" subColor={C.blue} />
       </div>
 
       <div style={{ display: 'flex', gap: 12, marginBottom: 16, flexWrap: 'wrap' }}>
         <select value={sectorFilter} onChange={e => setSectorFilter(e.target.value)}
           style={{ background: C.cardHover, color: C.text, border: `1px solid ${C.border}`, borderRadius: 8, padding: '8px 12px', fontSize: 12 }}>
-          <option value="">ÙÙ Ø§ÙÙØ·Ø§Ø¹Ø§Øª</option>
+          <option value="">كل القطاعات</option>
           {sectors.map(s => <option key={s} value={s}>{s}</option>)}
         </select>
         <select value={typeFilter} onChange={e => setTypeFilter(e.target.value)}
           style={{ background: C.cardHover, color: C.text, border: `1px solid ${C.border}`, borderRadius: 8, padding: '8px 12px', fontSize: 12 }}>
-          <option value="">ÙÙ Ø§ÙØ£ÙÙØ§Ø¹</option>
+          <option value="">كل الأنواع</option>
           {types.map(t => <option key={t} value={t}>{t}</option>)}
         </select>
-        <input placeholder="Ø¨Ø­Ø« ÙÙ Ø§ÙØ¨ÙØ§Ù..." value={search} onChange={e => setSearch(e.target.value)}
+        <input placeholder="بحث في البيان..." value={search} onChange={e => setSearch(e.target.value)}
           style={{ background: C.cardHover, color: C.text, border: `1px solid ${C.border}`, borderRadius: 8, padding: '8px 12px', fontSize: 12, flex: 1, minWidth: 200 }} />
       </div>
 
       <SectionCard title="" subtitle="">
         {loading ? (
-          <div style={{ textAlign: 'center', padding: 40, color: C.muted }}>Ø¬Ø§Ø±Ù Ø§ÙØªØ­ÙÙÙ ÙÙ Supabase...</div>
+          <div style={{ textAlign: 'center', padding: 40, color: C.muted }}>جاري التحميل من Supabase...</div>
         ) : (
           <div style={{ maxHeight: 500, overflowY: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
               <thead style={{ position: 'sticky', top: 0, background: C.card }}>
                 <tr style={{ borderBottom: `1px solid ${C.border}` }}>
-                  {['Ø§ÙØªØ§Ø±ÙØ®', 'Ø§ÙÙØ·Ø§Ø¹', 'Ø§ÙÙØ²Ø±Ø¹Ø©', 'Ø§ÙÙÙØ¹', 'Ø§ÙØ¨ÙØ§Ù', 'Ø§ÙÙØ¨ÙØº'].map(h =>
+                  {['التاريخ', 'القطاع', 'المزرعة', 'النوع', 'البيان', 'المبلغ'].map(h =>
                     <th key={h} style={{ padding: '10px 8px', textAlign: 'right', color: C.muted }}>{h}</th>
                   )}
                 </tr>
@@ -474,13 +474,13 @@ function Seedlings() {
   return (
     <div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 24 }}>
-        <KPICard label="ÙØ®ÙØ© Ø£Ù" value="929" sub="22 ÙØ¯Ø§Ù Ø¨Ø§ÙØ¹Ø²Ø¨Ø©" subColor={C.muted} />
-        <KPICard label="ÙØ³Ø§Ø¦Ù ÙÙØªØ¬Ø©" value={`${fmt(5382)}`} sub="5.79 ÙØ³ÙÙØ©/ÙØ®ÙØ©" subColor={C.green} />
-        <KPICard label="ÙØ³Ø§Ø¦Ù ÙØ¨Ø§Ø¹Ø©" value={`${fmt(1049)}`} sub="" subColor={C.gold} />
-        <KPICard label="Ø§ÙØ±ØµÙØ¯ Ø§ÙÙØªØ¨ÙÙ" value={`${fmt(1158)}`} sub={`${fmt(1158 * 3500)} Ø¬.Ù ÙÙÙØ©`} subColor={C.blue} />
+        <KPICard label="نخلة أم" value="929" sub="22 فدان بالعزبة" subColor={C.muted} />
+        <KPICard label="فسائل منتجة" value={`${fmt(5382)}`} sub="5.79 فسيلة/نخلة" subColor={C.green} />
+        <KPICard label="فسائل مباعة" value={`${fmt(1049)}`} sub="" subColor={C.gold} />
+        <KPICard label="الرصيد المتبقي" value={`${fmt(1158)}`} sub={`${fmt(1158 * 3500)} ج.م قيمة`} subColor={C.blue} />
       </div>
 
-      <SectionCard title="Ø­Ø±ÙØ© Ø§ÙÙØ³Ø§Ø¦Ù Ø§ÙØ³ÙÙÙØ©" subtitle="">
+      <SectionCard title="حركة الفسائل السنوية" subtitle="">
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={movements}>
             <CartesianGrid stroke={C.border} strokeDasharray="3 3" />
@@ -488,33 +488,33 @@ function Seedlings() {
             <YAxis tick={{ fill: C.muted, fontSize: 11 }} />
             <Tooltip contentStyle={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 8, color: C.text }} />
             <Legend />
-            <Bar dataKey="planted" name="Ø²Ø±Ø§Ø¹Ø©" fill={C.green} radius={[4, 4, 0, 0]} />
-            <Bar dataKey="replanting" name="ØªØ±ÙÙØ¹" fill={C.gold} radius={[4, 4, 0, 0]} />
-            <Bar dataKey="sold" name="Ø¨ÙØ¹" fill={C.blue} radius={[4, 4, 0, 0]} />
+            <Bar dataKey="planted" name="زراعة" fill={C.green} radius={[4, 4, 0, 0]} />
+            <Bar dataKey="replanting" name="ترقيع" fill={C.gold} radius={[4, 4, 0, 0]} />
+            <Bar dataKey="sold" name="بيع" fill={C.blue} radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </SectionCard>
 
-      <SectionCard title="Ø§ÙØªÙÙØ¹Ø§Øª Ø§ÙÙØ³ØªÙØ¨ÙÙØ©" subtitle="5 Ø³ÙÙØ§Øª ÙÙ Ø§ÙØ²Ø±Ø§Ø¹Ø© ÙØ£ÙÙ Ø¥ÙØªØ§Ø¬ ÙØ³Ø§Ø¦Ù">
+      <SectionCard title="التوقعات المستقبلية" subtitle="5 سنوات من الزراعة لأول إنتاج فسائل">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 12 }}>
           {[
-            { name: 'Ø§ÙÙ 22 ÙØ¯Ø§Ù', palms: 929, planted: '2018-2019', harvest: 'ÙØ´Ø·', projected: 5382, color: C.gold },
-            { name: 'Ø¹ÙØ§ÙØ©', palms: 667, planted: 'ÙÙÙÙÙ 2022', harvest: '2027', projected: 3862, color: C.green },
-            { name: 'Ø¨Ø§Ø¨ÙØ± 1-3', palms: 1051, planted: 'ÙÙÙÙÙ 2023', harvest: '2028', projected: 6085, color: C.red },
-            { name: 'Ø§ÙØ´ÙØ¹Ù', palms: 269, planted: 'ÙÙÙÙÙ 2023', harvest: '2028', projected: 1558, color: C.teal },
-            { name: 'Ø¨Ø§Ø¨ÙØ± 4-5', palms: 434, planted: 'ÙÙÙÙÙ 2025', harvest: '2030', projected: 2513, color: C.red },
-            { name: 'Ø­ØµÙÙ Ø£ØµÙÙØ©', palms: 498, planted: 'ÙÙÙÙÙ 2025', harvest: '2030', projected: 2883, color: C.green },
+            { name: 'الـ 22 فدان', palms: 929, planted: '2018-2019', harvest: 'نشط', projected: 5382, color: C.gold },
+            { name: 'عوامة', palms: 667, planted: 'يونيو 2022', harvest: '2027', projected: 3862, color: C.green },
+            { name: 'بابور 1-3', palms: 1051, planted: 'يونيو 2023', harvest: '2028', projected: 6085, color: C.red },
+            { name: 'الشفعه', palms: 269, planted: 'يونيو 2023', harvest: '2028', projected: 1558, color: C.teal },
+            { name: 'بابور 4-5', palms: 434, planted: 'يوليو 2025', harvest: '2030', projected: 2513, color: C.red },
+            { name: 'حصوه أصلية', palms: 498, planted: 'يوليو 2025', harvest: '2030', projected: 2883, color: C.green },
           ].map(s => (
             <div key={s.name} style={{ background: C.cardHover, borderRadius: 10, padding: 14, borderRight: `3px solid ${s.color}` }}>
               <div style={{ color: C.text, fontWeight: 600, fontSize: 14 }}>{s.name}</div>
-              <div style={{ color: C.muted, fontSize: 11, marginTop: 4 }}>{s.palms} ÙØ®ÙØ© | Ø²Ø±Ø§Ø¹Ø© {s.planted}</div>
-              <div style={{ color: C.green, fontSize: 13, fontWeight: 600, marginTop: 6 }}>Ø¨Ø¯Ø§ÙØ© Ø§ÙØ¥ÙØªØ§Ø¬: {s.harvest}</div>
-              <div style={{ color: C.blue, fontSize: 12 }}>ÙØªÙÙØ¹: ~{fmt(s.projected)} ÙØ³ÙÙØ©</div>
+              <div style={{ color: C.muted, fontSize: 11, marginTop: 4 }}>{s.palms} نخلة | زراعة {s.planted}</div>
+              <div style={{ color: C.green, fontSize: 13, fontWeight: 600, marginTop: 6 }}>بداية الإنتاج: {s.harvest}</div>
+              <div style={{ color: C.blue, fontSize: 12 }}>متوقع: ~{fmt(s.projected)} فسيلة</div>
             </div>
           ))}
         </div>
         <div style={{ marginTop: 16, padding: 12, background: C.blue + '22', borderRadius: 8, textAlign: 'center' }}>
-          <span style={{ color: C.text, fontSize: 16, fontWeight: 700 }}>Ø¥Ø¬ÙØ§ÙÙ Ø§ÙÙØ³Ø§Ø¦Ù Ø§ÙÙØªÙÙØ¹Ø©: ~{fmt(18771)} ÙØ³ÙÙØ©</span>
+          <span style={{ color: C.text, fontSize: 16, fontWeight: 700 }}>إجمالي الفسائل المتوقعة: ~{fmt(18771)} فسيلة</span>
         </div>
       </SectionCard>
     </div>
@@ -530,13 +530,13 @@ function Scorecard() {
   if (!dA || !dB) return null;
 
   const metrics = [
-    { label: 'Ø¥Ø¬ÙØ§ÙÙ Ø§ÙØ¥ÙØ±Ø§Ø¯Ø§Øª', a: dA.revenue, b: dB.revenue },
-    { label: 'Ø¥Ø¬ÙØ§ÙÙ Ø§ÙØªÙØ§ÙÙÙ', a: dA.costs, b: dB.costs, invert: true },
-    { label: 'ØµØ§ÙÙ Ø§ÙØ±Ø¨Ø­', a: dA.revenue - dA.costs, b: dB.revenue - dB.costs },
-    { label: 'ÙØ§ÙØ´ Ø§ÙØ±Ø¨Ø­ %', a: ((dA.revenue - dA.costs) / dA.revenue) * 100, b: ((dB.revenue - dB.costs) / dB.revenue) * 100, isPct: true },
-    { label: 'Ø¥ÙØ±Ø§Ø¯/ÙØ¯Ø§Ù', a: dA.revenue / 115, b: dB.revenue / 115 },
-    { label: 'ØªÙÙÙØ©/ÙØ¯Ø§Ù', a: dA.costs / 115, b: dB.costs / 115, invert: true },
-    { label: 'Ø±Ø¨Ø­/ÙØ¯Ø§Ù', a: (dA.revenue - dA.costs) / 115, b: (dB.revenue - dB.costs) / 115 },
+    { label: 'إجمالي الإيرادات', a: dA.revenue, b: dB.revenue },
+    { label: 'إجمالي التكاليف', a: dA.costs, b: dB.costs, invert: true },
+    { label: 'صافي الربح', a: dA.revenue - dA.costs, b: dB.revenue - dB.costs },
+    { label: 'هامش الربح %', a: ((dA.revenue - dA.costs) / dA.revenue) * 100, b: ((dB.revenue - dB.costs) / dB.revenue) * 100, isPct: true },
+    { label: 'إيراد/فدان', a: dA.revenue / 115, b: dB.revenue / 115 },
+    { label: 'تكلفة/فدان', a: dA.costs / 115, b: dB.costs / 115, invert: true },
+    { label: 'ربح/فدان', a: (dA.revenue - dA.costs) / 115, b: (dB.revenue - dB.costs) / 115 },
   ];
 
   const allYears = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
@@ -545,7 +545,7 @@ function Scorecard() {
     <div>
       <div style={{ display: 'flex', gap: 20, marginBottom: 24, flexWrap: 'wrap', alignItems: 'center' }}>
         <div>
-          <span style={{ color: C.muted, fontSize: 12, marginLeft: 8 }}>Ø§ÙØ³ÙØ© Ø£:</span>
+          <span style={{ color: C.muted, fontSize: 12, marginLeft: 8 }}>السنة أ:</span>
           {allYears.map(y => (
             <button key={y} onClick={() => setYearA(y)} style={{
               padding: '6px 12px', borderRadius: 6, fontSize: 12, cursor: 'pointer', margin: '0 2px',
@@ -555,7 +555,7 @@ function Scorecard() {
           ))}
         </div>
         <div>
-          <span style={{ color: C.muted, fontSize: 12, marginLeft: 8 }}>Ø§ÙØ³ÙØ© Ø¨:</span>
+          <span style={{ color: C.muted, fontSize: 12, marginLeft: 8 }}>السنة ب:</span>
           {allYears.map(y => (
             <button key={y} onClick={() => setYearB(y)} style={{
               padding: '6px 12px', borderRadius: 6, fontSize: 12, cursor: 'pointer', margin: '0 2px',
@@ -566,14 +566,14 @@ function Scorecard() {
         </div>
       </div>
 
-      <SectionCard title={`ÙÙØ§Ø±ÙØ© ${yearA} â ${yearB}`} subtitle="">
+      <SectionCard title={`مقارنة ${yearA} ↔ ${yearB}`} subtitle="">
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
           <thead>
             <tr style={{ borderBottom: `1px solid ${C.border}` }}>
-              <th style={{ padding: 12, textAlign: 'right', color: C.muted }}>Ø§ÙÙØ¤Ø´Ø±</th>
+              <th style={{ padding: 12, textAlign: 'right', color: C.muted }}>المؤشر</th>
               <th style={{ padding: 12, textAlign: 'right', color: C.blue }}>{yearA}</th>
               <th style={{ padding: 12, textAlign: 'right', color: C.green }}>{yearB}</th>
-              <th style={{ padding: 12, textAlign: 'right', color: C.muted }}>Ø§ÙØªØºÙÙØ±</th>
+              <th style={{ padding: 12, textAlign: 'right', color: C.muted }}>التغيير</th>
             </tr>
           </thead>
           <tbody>
@@ -583,10 +583,10 @@ function Scorecard() {
               return (
                 <tr key={m.label} style={{ borderBottom: `1px solid ${C.border}22` }}>
                   <td style={{ padding: 12, color: C.text, fontWeight: 500 }}>{m.label}</td>
-                  <td style={{ padding: 12, color: C.muted }}>{m.isPct ? `${m.a.toFixed(1)}%` : `${fmt(m.a)} Ø¬.Ù`}</td>
-                  <td style={{ padding: 12, color: C.text, fontWeight: 600 }}>{m.isPct ? `${m.b.toFixed(1)}%` : `${fmt(m.b)} Ø¬.Ù`}</td>
+                  <td style={{ padding: 12, color: C.muted }}>{m.isPct ? `${m.a.toFixed(1)}%` : `${fmt(m.a)} ج.م`}</td>
+                  <td style={{ padding: 12, color: C.text, fontWeight: 600 }}>{m.isPct ? `${m.b.toFixed(1)}%` : `${fmt(m.b)} ج.م`}</td>
                   <td style={{ padding: 12, color: improved ? C.green : C.red, fontWeight: 600 }}>
-                    {change > 0 ? 'â' : 'â'} {Math.abs(change).toFixed(1)}%
+                    {change > 0 ? '↑' : '↓'} {Math.abs(change).toFixed(1)}%
                   </td>
                 </tr>
               );
@@ -601,14 +601,14 @@ function Scorecard() {
 // ====== PAGE: FUTURE OUTLOOK ======
 function FutureOutlook() {
   const scenarios = [
-    { name: 'ÙØªØ­ÙØ¸ (19%)', values: [9.2, 11.1, 13.0], color: C.gold },
-    { name: 'Ø£Ø³Ø§Ø³Ù (32%)', values: [10.5, 13.8, 17.5], color: C.green },
-    { name: 'ÙØªÙØ§Ø¦Ù (40%)', values: [11.8, 16.2, 21.0], color: C.blue },
+    { name: 'متحفظ (19%)', values: [9.2, 11.1, 13.0], color: C.gold },
+    { name: 'أساسي (32%)', values: [10.5, 13.8, 17.5], color: C.green },
+    { name: 'متفائل (40%)', values: [11.8, 16.2, 21.0], color: C.blue },
   ];
 
   return (
     <div>
-      <SectionCard title="ØªÙÙØ¹Ø§Øª Ø§ÙØ¥ÙØ±Ø§Ø¯Ø§Øª" subtitle="3 Ø³ÙÙØ§Ø±ÙÙÙØ§Øª ÙÙÙÙÙ">
+      <SectionCard title="توقعات الإيرادات" subtitle="3 سيناريوهات للنمو">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
           {scenarios.map(s => (
             <div key={s.name} style={{ background: C.cardHover, borderRadius: 12, padding: 16, borderTop: `3px solid ${s.color}` }}>
@@ -616,39 +616,39 @@ function FutureOutlook() {
               {['2026', '2027', '2028'].map((y, i) => (
                 <div key={y} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
                   <span style={{ color: C.muted, fontSize: 12 }}>{y}</span>
-                  <span style={{ color: C.text, fontWeight: 600, fontSize: 14 }}>{s.values[i]}M Ø¬.Ù</span>
+                  <span style={{ color: C.text, fontWeight: 600, fontSize: 14 }}>{s.values[i]}M ج.م</span>
                 </div>
               ))}
             </div>
           ))}
         </div>
         <div style={{ marginTop: 12, padding: 10, background: C.gold + '22', borderRadius: 8, color: C.gold, fontSize: 12, textAlign: 'center' }}>
-          â ï¸ Ø§ÙØ¨ÙØ¬Ø± (30% ÙÙ Ø¥ÙØ±Ø§Ø¯Ø§Øª 2025) Ø¨ÙÙÙ Ø³ÙÙÙØ§Ù ÙØ¹ ÙØ¨Ø± Ø§ÙÙØ®ÙÙ â ÙØ­Ø³ÙØ¨ ÙÙ Ø§ÙØªÙÙØ¹Ø§Øª
+          ⚠️ البنجر (30% من إيرادات 2025) بيقل سنوياً مع كبر النخيل — محسوب في التوقعات
         </div>
       </SectionCard>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-        <SectionCard title="ð¢ ÙØ±Øµ" subtitle="">
+        <SectionCard title="🟢 فرص" subtitle="">
           <div style={{ fontSize: 13, color: C.text, lineHeight: 2 }}>
-            â¢ 5 ÙØ·Ø§Ø¹Ø§Øª ØªØ¯Ø®Ù Ø§ÙØ¥ÙØªØ§Ø¬ 2027-2030<br />
-            â¢ ~15.4M ÙÙ Ø¨ÙØ¹ Ø§ÙÙØ³Ø§Ø¦Ù Ø§ÙÙØªÙÙØ¹Ø©<br />
-            â¢ ØªØµØ¯ÙØ± Ø§ÙØ¨Ø±Ø­Ù 3-5Ã Ø§ÙØ³Ø¹Ø± Ø§ÙÙØ­ÙÙ<br />
-            â¢ ~18,771 ÙØ³ÙÙØ© ÙØªÙÙØ¹Ø© Ø§ÙØ¥ÙØªØ§Ø¬<br />
-            â¢ ÙÙÙ Ø§ÙØ¨ÙØ­ ÙØ¹ÙØ¶ Ø§ÙØ®ÙØ§Ø¶ Ø§ÙØ¨ÙØ¬Ø±
+            • 5 قطاعات تدخل الإنتاج 2027-2030<br />
+            • ~15.4M من بيع الفسائل المتوقعة<br />
+            • تصدير البرحي 3-5× السعر المحلي<br />
+            • ~18,771 فسيلة متوقعة الإنتاج<br />
+            • نمو البلح يعوض انخفاض البنجر
           </div>
         </SectionCard>
-        <SectionCard title="ð´ ÙØ®Ø§Ø·Ø±" subtitle="">
+        <SectionCard title="🔴 مخاطر" subtitle="">
           <div style={{ fontSize: 13, color: C.text, lineHeight: 2 }}>
-            â¢ ØªÙØ§ÙÙÙ +86% Ø£Ø³Ø±Ø¹ ÙÙ Ø§ÙØ¥ÙØ±Ø§Ø¯Ø§Øª<br />
-            â¢ Ø§Ø¹ØªÙØ§Ø¯ Ø¹ÙÙ 22 ÙØ¯Ø§Ù (52% ÙÙ Ø§ÙØ¥ÙØ±Ø§Ø¯Ø§Øª)<br />
-            â¢ Ø§ÙØ¨ÙØ¬Ø± Ø¨ÙÙÙ Ø³ÙÙÙØ§Ù<br />
-            â¢ ØªÙÙØ¨Ø§Øª Ø£Ø³Ø¹Ø§Ø± Ø§ÙØ¨ÙØ­<br />
-            â¢ ÙØ®Ø§Ø·Ø± ÙØ§Ø¦ÙØ© ÙØ·Ø§ÙØ©
+            • تكاليف +86% أسرع من الإيرادات<br />
+            • اعتماد على 22 فدان (52% من الإيرادات)<br />
+            • البنجر بيقل سنوياً<br />
+            • تقلبات أسعار البلح<br />
+            • مخاطر مائية وطاقة
           </div>
         </SectionCard>
       </div>
 
-      <SectionCard title="ØªÙÙØ¹Ø§Øª ÙØ¨ÙØ¹Ø§Øª Ø§ÙÙØ³Ø§Ø¦Ù" subtitle="">
+      <SectionCard title="توقعات مبيعات الفسائل" subtitle="">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
           {[
             { year: '2026', qty: 800, price: 3500, total: 2800000 },
@@ -657,8 +657,8 @@ function FutureOutlook() {
           ].map(f => (
             <div key={f.year} style={{ background: C.cardHover, borderRadius: 10, padding: 14, textAlign: 'center' }}>
               <div style={{ color: C.muted, fontSize: 12 }}>{f.year}</div>
-              <div style={{ color: C.text, fontSize: 20, fontWeight: 700 }}>{fmt(f.total)} Ø¬.Ù</div>
-              <div style={{ color: C.muted, fontSize: 11 }}>{fmt(f.qty)} ÙØ³ÙÙØ© Ã {fmt(f.price)} Ø¬.Ù</div>
+              <div style={{ color: C.text, fontSize: 20, fontWeight: 700 }}>{fmt(f.total)} ج.م</div>
+              <div style={{ color: C.muted, fontSize: 11 }}>{fmt(f.qty)} فسيلة × {fmt(f.price)} ج.م</div>
             </div>
           ))}
         </div>
@@ -679,44 +679,44 @@ function Weather() {
   }, []);
 
   const weatherIcon = (code: number) => {
-    if (code <= 1) return 'âï¸';
-    if (code <= 3) return 'â';
-    if (code <= 48) return 'ð«ï¸';
-    if (code <= 67) return 'ð§ï¸';
-    if (code <= 77) return 'âï¸';
-    if (code <= 82) return 'ð¦ï¸';
-    return 'âï¸';
+    if (code <= 1) return '☀️';
+    if (code <= 3) return '⛅';
+    if (code <= 48) return '🌫️';
+    if (code <= 67) return '🌧️';
+    if (code <= 77) return '❄️';
+    if (code <= 82) return '🌦️';
+    return '⛈️';
   };
 
-  const days = ['Ø§ÙØ£Ø­Ø¯', 'Ø§ÙØ¥Ø«ÙÙÙ', 'Ø§ÙØ«ÙØ§Ø«Ø§Ø¡', 'Ø§ÙØ£Ø±Ø¨Ø¹Ø§Ø¡', 'Ø§ÙØ®ÙÙØ³', 'Ø§ÙØ¬ÙØ¹Ø©', 'Ø§ÙØ³Ø¨Øª'];
+  const days = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
 
-  if (!weather) return <div style={{ textAlign: 'center', padding: 60, color: C.muted }}>Ø¬Ø§Ø±Ù ØªØ­ÙÙÙ Ø¨ÙØ§ÙØ§Øª Ø§ÙØ·ÙØ³...</div>;
+  if (!weather) return <div style={{ textAlign: 'center', padding: 60, color: C.muted }}>جاري تحميل بيانات الطقس...</div>;
 
   const temp = weather.current?.temperature_2m;
   const tips: string[] = [];
-  if (temp > 42) tips.push('ð¥ Ø­Ø±Ø§Ø±Ø© Ø´Ø¯ÙØ¯Ø© â Ø²ÙÙØ¯ Ø§ÙØ±Ù ÙØªØ¬ÙØ¨ Ø§ÙØ¹ÙÙ ÙÙØª Ø§ÙØ¸ÙØ±');
-  else if (temp > 38) tips.push('âï¸ Ø­Ø±Ø§Ø±Ø© Ø¹Ø§ÙÙØ© â ØªØ£ÙØ¯ ÙÙ ÙÙØ§ÙØ© Ø§ÙØ±Ù');
-  else if (temp < 8) tips.push('âï¸ Ø¨Ø±ÙØ¯Ø© â Ø§Ø­ÙÙ Ø§ÙÙØ³Ø§Ø¦Ù Ø§ÙØµØºÙØ±Ø©');
-  if (weather.daily?.precipitation_sum?.[0] > 5) tips.push('ð§ï¸ Ø£ÙØ·Ø§Ø± â Ø£Ø¬ÙÙ Ø§ÙØ±Ø´ ÙØ§ÙØªØ³ÙÙØ¯');
-  if (weather.daily?.wind_speed_10m_max?.[0] > 30) tips.push('ð¨ Ø±ÙØ§Ø­ ÙÙÙØ© â Ø«Ø¨ÙØª Ø§ÙØ³Ø¨Ø§Ø·Ø§Øª ÙØ§ÙØ¨Ø±Ø§ÙÙØ²');
-  if (weather.daily?.uv_index_max?.[0] > 8) tips.push('ð Ø£Ø´Ø¹Ø© UV Ø¹Ø§ÙÙØ© â ÙØªØ±Ø© ÙØ«Ø§ÙÙØ© ÙÙØ¶Ø¬ Ø§ÙØ¨ÙØ­');
-  if (tips.length === 0 && temp >= 25 && temp <= 35) tips.push('ð¿ Ø·ÙØ³ ÙØ«Ø§ÙÙ ÙÙØ¹ÙÙ ÙÙ Ø§ÙÙØ²Ø±Ø¹Ø©');
+  if (temp > 42) tips.push('🔥 حرارة شديدة — زوّد الري وتجنب العمل وقت الظهر');
+  else if (temp > 38) tips.push('☀️ حرارة عالية — تأكد من كفاية الري');
+  else if (temp < 8) tips.push('❄️ برودة — احمي الفسائل الصغيرة');
+  if (weather.daily?.precipitation_sum?.[0] > 5) tips.push('🌧️ أمطار — أجّل الرش والتسميد');
+  if (weather.daily?.wind_speed_10m_max?.[0] > 30) tips.push('💨 رياح قوية — ثبّت السباطات والبراويز');
+  if (weather.daily?.uv_index_max?.[0] > 8) tips.push('🌞 أشعة UV عالية — فترة مثالية لنضج البلح');
+  if (tips.length === 0 && temp >= 25 && temp <= 35) tips.push('🌿 طقس مثالي للعمل في المزرعة');
 
   return (
     <div>
-      <SectionCard title="Ø§ÙØ·ÙØ³ Ø§ÙØ­Ø§ÙÙ â ÙØ§ÙÙØ³, Ø§ÙØ´Ø±ÙÙØ©" subtitle="">
+      <SectionCard title="الطقس الحالي — فاقوس, الشرقية" subtitle="">
         <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 20 }}>
           <div style={{ fontSize: 64 }}>{weatherIcon(weather.current?.weather_code || 0)}</div>
           <div>
-            <div style={{ fontSize: 48, fontWeight: 700, color: C.text }}>{temp}Â°C</div>
+            <div style={{ fontSize: 48, fontWeight: 700, color: C.text }}>{temp}°C</div>
             <div style={{ color: C.muted, fontSize: 14 }}>
-              Ø±Ø·ÙØ¨Ø© {weather.current?.relative_humidity_2m}% | Ø±ÙØ§Ø­ {weather.current?.wind_speed_10m} ÙÙ/Ø³
+              رطوبة {weather.current?.relative_humidity_2m}% | رياح {weather.current?.wind_speed_10m} كم/س
             </div>
           </div>
         </div>
       </SectionCard>
 
-      <SectionCard title="ØªÙÙØ¹Ø§Øª 7 Ø£ÙØ§Ù" subtitle="">
+      <SectionCard title="توقعات 7 أيام" subtitle="">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 8 }}>
           {weather.daily?.time?.map((date: string, i: number) => {
             const d = new Date(date);
@@ -724,10 +724,10 @@ function Weather() {
               <div key={date} style={{ background: C.cardHover, borderRadius: 10, padding: 12, textAlign: 'center' }}>
                 <div style={{ color: C.muted, fontSize: 11 }}>{days[d.getDay()]}</div>
                 <div style={{ fontSize: 28, margin: '8px 0' }}>{weatherIcon(weather.daily.weather_code[i])}</div>
-                <div style={{ color: C.red, fontSize: 14, fontWeight: 600 }}>{weather.daily.temperature_2m_max[i]}Â°</div>
-                <div style={{ color: C.blue, fontSize: 12 }}>{weather.daily.temperature_2m_min[i]}Â°</div>
+                <div style={{ color: C.red, fontSize: 14, fontWeight: 600 }}>{weather.daily.temperature_2m_max[i]}°</div>
+                <div style={{ color: C.blue, fontSize: 12 }}>{weather.daily.temperature_2m_min[i]}°</div>
                 {weather.daily.precipitation_sum[i] > 0 && (
-                  <div style={{ color: C.teal, fontSize: 10, marginTop: 4 }}>ð§ {weather.daily.precipitation_sum[i]}mm</div>
+                  <div style={{ color: C.teal, fontSize: 10, marginTop: 4 }}>🌧 {weather.daily.precipitation_sum[i]}mm</div>
                 )}
               </div>
             );
@@ -736,7 +736,7 @@ function Weather() {
       </SectionCard>
 
       {tips.length > 0 && (
-        <SectionCard title="ÙØµØ§Ø¦Ø­ Ø²Ø±Ø§Ø¹ÙØ©" subtitle="">
+        <SectionCard title="نصائح زراعية" subtitle="">
           <div style={{ fontSize: 14, color: C.text, lineHeight: 2 }}>
             {tips.map((tip, i) => <div key={i}>{tip}</div>)}
           </div>
@@ -772,10 +772,10 @@ export default function AnalyticsDashboard() {
         position: 'sticky', top: 0, zIndex: 50, display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginLeft: 20 }}>
-          <span style={{ fontSize: 28 }}>ð´</span>
+          <span style={{ fontSize: 28 }}>🌴</span>
           <div>
-            <div style={{ color: C.text, fontSize: 16, fontWeight: 700 }}>ÙØ²Ø§Ø±Ø¹ Ø¹Ø¨ÙØ¯</div>
-            <div style={{ color: C.muted, fontSize: 11 }}>ÙØ®ÙÙ Ø¨ÙØ­ Ø¨Ø±Ø­Ù Â· 115 ÙØ¯Ø§Ù</div>
+            <div style={{ color: C.text, fontSize: 16, fontWeight: 700 }}>مزارع عبيد</div>
+            <div style={{ color: C.muted, fontSize: 11 }}>نخيل بلح برحي · 115 فدان</div>
           </div>
         </div>
         <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', flex: 1 }}>
