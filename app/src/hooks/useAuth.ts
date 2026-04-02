@@ -1,16 +1,17 @@
 'use client';
 
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase';
 import type { Profile, UserRole, ROLE_PERMISSIONS } from '@/types/database';
 import { ROLE_PERMISSIONS as permissions } from '@/types/database';
 import type { User } from '@supabase/supabase-js';
 
+const supabase = createClient();
+
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
-  const supabase = useMemo(() => createClient(), []);
 
   const fetchProfile = useCallback(async (userId: string) => {
     const { data } = await supabase
@@ -19,7 +20,7 @@ export function useAuth() {
       .eq('id', userId)
       .single();
     setProfile(data);
-  }, [supabase]);
+  }, []);
 
   useEffect(() => {
     const getUser = async () => {
@@ -44,7 +45,7 @@ export function useAuth() {
     );
 
     return () => subscription.unsubscribe();
-  }, [supabase, fetchProfile]);
+  }, [fetchProfile]);
 
   const signIn = async (email: string, password: string) => {
     const { error } = await supabase.auth.signInWithPassword({ email, password });

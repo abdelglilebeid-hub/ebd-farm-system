@@ -1,13 +1,15 @@
 'use client';
 
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { createClient } from '@/lib/supabase';
 import type { Notification } from '@/types/database';
+
+const supabase = createClient();
 
 export function useNotifications() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
-  const supabase = useMemo(() => createClient(), []);
+  const channelRef = useRef<ReturnType<typeof supabase.channel> | null>(null);
 
   const fetchNotifications = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser();
@@ -24,13 +26,15 @@ export function useNotifications() {
       setNotifications(data);
       setUnreadCount(data.filter(n => !n.is_read).length);
     }
-  }, [supabase]);
+  }, []);
 
   useEffect(() => {
     fetchNotifications();
 
+    // Use unique channel name to avoid conflicts
+    const channelName = `notifications-${Date.now()}`;
     const channel = supabase
-      .channel('notifications')
+      .channel(channelName)
       .on('postgres_changes', {
         event: 'INSERT',
         schema: 'public',
@@ -41,8 +45,15 @@ export function useNotifications() {
       })
       .subscribe();
 
-    return () => { supabase.removeChannel(channel); };
-  }, [supabase, fetchNotifications]);
+    channelRef.current = channel;
+
+    return () => {
+      if (channelRef.current) {
+        supabase.removeChannel(channelRef.current);
+        channelRef.current = null;
+      }
+    };
+  }, [fetchNotifications]);
 
   const markAsRead = async (id: string) => {
     await supabase.from('notifications').update({ is_read: true }).eq('id', id);
