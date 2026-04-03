@@ -10,7 +10,7 @@ import StatsCard from '@/components/ui/StatsCard';
 import {
   Receipt, ShoppingCart, TrendingUp, Palmtree,
   ClipboardList, CreditCard, Bell, CheckCircle,
-  AlertTriangle, Clock
+  AlertTriangle, Clock, MapPin, Users, Building2
 } from 'lucide-react';
 
 // Dynamic import recharts to avoid SSR hydration issues
@@ -170,16 +170,48 @@ export default function DashboardPage() {
     );
   }
 
+  const farmTeam = [
+    { name: 'م. عبدالجليل عبيد', role: 'مدير المزرعة', color: 'bg-emerald-500' },
+    { name: 'م. عبدالرحمن أمجد', role: 'مهندس تنفيذي', color: 'bg-blue-500' },
+    { name: 'أحمد ماهر', role: 'مدير حسابات', color: 'bg-purple-500' },
+    { name: 'عبده حسن زيد', role: 'مشرف عام', color: 'bg-orange-500' },
+  ];
+
+  const farmSectors = [
+    { name: 'قطاع الـ 22 فدان', supervisor: 'عبدالحميد أحمد' },
+    { name: 'قطاع الحصوة', supervisor: 'محمد أحمد الصوري' },
+    { name: 'قطاع حوض البابور والشفعة', supervisor: 'محمد فتحي' },
+    { name: 'قطاع الخطارة', supervisor: 'عادل الصادق' },
+  ];
+
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-gray-800">
-          مرحباً {profile?.full_name || ''}
-        </h1>
-        <p className="text-gray-500 mt-1">
-          {getMonthName(month)} {year} - ملخص العمليات والمحاسبة
-        </p>
+      {/* Header with Farm Info */}
+      <div className="bg-gradient-to-l from-emerald-600 to-emerald-800 rounded-2xl p-6 text-white">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold">
+              مرحباً {profile?.full_name || ''}
+            </h1>
+            <p className="text-emerald-100 mt-1">
+              {getMonthName(month)} {year} - ملخص العمليات والمحاسبة
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 text-sm">
+            <div className="flex items-center gap-2 bg-white/15 rounded-lg px-3 py-2">
+              <Building2 size={16} />
+              <span>عزبة النخيل - م. أحمد عبدالجليل عبيد</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/15 rounded-lg px-3 py-2">
+              <MapPin size={16} />
+              <span>الشرقية، مصر</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white/15 rounded-lg px-3 py-2">
+              <Palmtree size={16} />
+              <span>نخيل برحي - {formatNumber(4380)} نخلة</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Stats Grid */}
@@ -299,6 +331,49 @@ export default function DashboardPage() {
                 <p className="text-gray-400 text-center py-4 text-sm">لا توجد مهام نشطة</p>
               )}
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Farm Team & Sectors */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Team */}
+        <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <h3 className="font-bold text-gray-700 flex items-center gap-2 mb-4">
+            <Users size={16} />
+            فريق العمل
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {farmTeam.map((member) => (
+              <div key={member.name} className="flex items-center gap-3 p-3 rounded-lg bg-gray-50">
+                <div className={`w-9 h-9 ${member.color} rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0`}>
+                  {member.name.replace('م. ', '').charAt(0)}
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-gray-700 truncate">{member.name}</p>
+                  <p className="text-xs text-gray-400">{member.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Sectors */}
+        <div className="bg-white rounded-xl border border-gray-200 p-5">
+          <h3 className="font-bold text-gray-700 flex items-center gap-2 mb-4">
+            <MapPin size={16} />
+            قطاعات المزرعة
+          </h3>
+          <div className="space-y-3">
+            {farmSectors.map((sector) => (
+              <div key={sector.name} className="flex items-center justify-between p-3 rounded-lg bg-gray-50">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+                  <span className="text-sm font-medium text-gray-700">{sector.name}</span>
+                </div>
+                <span className="text-xs text-gray-500 bg-white px-2 py-1 rounded-md border border-gray-100">{sector.supervisor}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
