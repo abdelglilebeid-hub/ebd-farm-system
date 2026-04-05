@@ -1,7 +1,7 @@
 import { createServerSupabaseClient } from '@/lib/supabase-server';
 import { NextRequest, NextResponse } from 'next/server';
 
-const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
 const SYSTEM_PROMPT = `أنت "عبدالجليل" - مساعد زراعي ذكي متخصص في إدارة مزارع النخيل. أنت خبير زراعي محترف يتحدث بالعربية بأسلوب بسيط وعملي.
 
@@ -104,10 +104,10 @@ ${payments.data?.map((p: any) => `- ${p.description}: ${p.amount?.toLocaleString
 
 export async function POST(req: NextRequest) {
   try {
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
-        { error: 'مفتاح API غير مُعد. يرجى إضافة ANTHROPIC_API_KEY في إعدادات Vercel.' },
+        { error: 'مفتاح API غير مُعد. يرجى إضافة GEMINI_API_KEY في إعدادات Vercel.' },
         { status: 500 }
       );
     }
@@ -129,28 +129,33 @@ export async function POST(req: NextRequest) {
 
     const fullSystemPrompt = SYSTEM_PROMPT + '\n' + farmDataContext;
 
-    // Call Claude API
-    const response = await fetch(ANTHROPIC_API_URL, {
+    // Convert messages to Gemini format
+    const geminiContents = messages.map((m: any) => ({
+      role: m.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: m.content }],
+    }));
+
+    // Call Gemini API
+    const response = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 2048,
-        system: fullSystemPrompt,
-        messages: messages.map((m: any) => ({
-          role: m.role,
-          content: m.content,
-        })),
+        system_instruction: {
+          parts: [{ text: fullSystemPrompt }],
+        },
+        contents: geminiContents,
+        generationConfig: {
+          maxOutputTokens: 2048,
+          temperature: 0.7,
+        },
       }),
     });
 
     if (!response.ok) {
       const errData = await response.text();
-      console.error('Claude API error:', errData);
+      console.error('Gemini API error:', errData);
       return NextResponse.json(
         { error: 'حدث خطأ في الاتصال بالمساعد الذكي' },
         { status: 500 }
@@ -158,7 +163,7 @@ export async function POST(req: NextRequest) {
     }
 
     const data = await response.json();
-    const assistantMessage = data.content?.[0]?.text || 'عذراً، لم أتمكن من الرد.';
+    const assistantMessage = data.candidates?.[0]?.content?.parts?.[0]?.text || 'عذراً، لم أتمكن من الرد.';
 
     return NextResponse.json({ message: assistantMessage });
   } catch (error: any) {
