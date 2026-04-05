@@ -4,6 +4,9 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import Sidebar from '@/components/layout/Sidebar';
+import dynamic from 'next/dynamic';
+
+const ChatWidget = dynamic(() => import('@/components/chat/ChatWidget'), { ssr: false });
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
@@ -33,6 +36,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {children}
         </div>
       </main>
+      <ChatWidget />
     </div>
   );
 }
