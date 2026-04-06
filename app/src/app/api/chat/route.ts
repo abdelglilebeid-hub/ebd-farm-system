@@ -156,8 +156,13 @@ export async function POST(req: NextRequest) {
     if (!response.ok) {
       const errData = await response.text();
       console.error('Gemini API error:', errData);
+      let errorDetail = 'حدث خطأ في الاتصال بالمساعد الذكي';
+      try {
+        const errJson = JSON.parse(errData);
+        errorDetail = errJson?.error?.message || errorDetail;
+      } catch {}
       return NextResponse.json(
-        { error: 'حدث خطأ في الاتصال بالمساعد الذكي' },
+        { error: errorDetail, debug: `Status: ${response.status}` },
         { status: 500 }
       );
     }
