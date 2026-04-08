@@ -1,7 +1,7 @@
 import { createServerSupabaseClient } from '@/lib/supabase-server';
 import { NextRequest, NextResponse } from 'next/server';
 
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent';
 
 const SYSTEM_PROMPT = `أنت "عبدالجليل" - مساعد زراعي ذكي متخصص في إدارة مزارع النخيل. أنت خبير زراعي محترف يتحدث بالعربية بأسلوب بسيط وعملي.
 
