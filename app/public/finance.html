@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ÙÙØ¸Ù Ø§ÙØ´ØºÙ ÙØ§ÙÙØµØ§Ø±ÙÙ - Ø£ÙÙÙØ§ÙÙ</title>
+  <style>
+    :root{
+      --bg:#f5f7fb; --card:#ffffff; --text:#1f2937; --muted:#6b7280;
+      --border:#dbe3ef; --accent:#2563eb; --accent2:#16a34a; --danger:#dc2626;
+      --shadow:0 8px 24px rgba(0,0,0,.08); --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1450px;margin:20px auto;padding:0 14px 28px}
+    .hero{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border-radius:24px;padding:22px 20px;box-shadow:var(--shadow);margin-bottom:18px}
+    .hero h1{margin:0 0 6px;font-size:30px}
+    .hero p{margin:0;color:#eaf1ff}
+    .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+    .stat{background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:16px}
+    .stat .k{color:var(--muted);font-size:14px;margin-bottom:8px}
+    .stat .v{font-size:26px;font-weight:700}
+    .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+    .tab{border:none;border-radius:14px;padding:12px 18px;font-weight:700;cursor:pointer;background:#e8eef9;color:#123d98}
+    .tab.active{background:var(--accent);color:#fff}
+    .page{display:none}
+    .page.active{display:block}
+    .grid{display:grid;grid-template-columns:390px 1fr;gap:18px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+    h2{margin:0 0 12px;font-size:22px}
+    h3{margin:0 0 10px;font-size:18px}
+    label{display:block;font-weight:700;margin:12px 0 6px}
+    input,select,textarea,button{font-family:inherit;font-size:15px}
+    input,select,textarea{width:100%;padding:11px 12px;border:1px solid #cfd8e7;border-radius:12px;background:#fff}
+    textarea{min-height:88px;resize:vertical}
+    .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    button{border:none;border-radius:12px;padding:11px 15px;cursor:pointer;font-weight:700}
+    .primary{background:var(--accent);color:#fff}
+    .secondary{background:#e5eefc;color:#1142a8}
+    .success{background:var(--accent2);color:#fff}
+    .danger{background:var(--danger);color:#fff}
+    .ghost{background:#eef2f7;color:#374151}
+    .toolbar{display:grid;grid-template-columns:1.1fr .9fr .9fr .8fr .8fr auto;gap:10px;margin-bottom:12px}
+    table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden}
+    th,td{padding:12px 10px;border-bottom:1px solid #edf1f7;text-align:right;vertical-align:top}
+    th{background:#f8fafc;font-size:14px}
+    tr:hover td{background:#fbfdff}
+    .pill{display:inline-block;padding:5px 10px;border-radius:999px;font-size:13px;font-weight:700}
+    .pill-main{background:#dbeafe;color:#1d4ed8}
+    .pill-sub{background:#dcfce7;color:#166534}
+    .pill-status-open{background:#fee2e2;color:#991b1b}
+    .pill-status-done{background:#dcfce7;color:#166534}
+    .pill-status-progress{background:#fef3c7;color:#92400e}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+    .msg{margin-top:10px;padding:10px 12px;border-radius:12px;display:none;font-weight:700}
+    .msg.ok{display:block;background:#dcfce7;color:#166534}
+    .msg.err{display:block;background:#fee2e2;color:#991b1b}
+    .sectionHead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+    .note{color:var(--muted);font-size:13px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{background:#eef2f7;border:1px solid var(--border);padding:8px 10px;border-radius:999px;display:flex;gap:8px;align-items:center}
+    .inline{display:flex;gap:8px;align-items:center}
+    .inline input{flex:1}
+    .empty{padding:18px;text-align:center;color:var(--muted)}
+    .footer-note{color:var(--muted);font-size:13px;margin-top:10px;line-height:1.8}
+    .category-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 18px}
+    @media (max-width: 1100px){
+      .grid{grid-template-columns:1fr}
+      .summary,.category-summary{grid-template-columns:1fr 1fr}
+      .toolbar{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 620px){
+      .summary,.category-summary,.row2,.toolbar{grid-template-columns:1fr}
+      .hero h1{font-size:22px}
+      .stat .v{font-size:22px}
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>ÙÙØ¸Ù Ø§ÙØ´ØºÙ ÙØ§ÙÙØµØ§Ø±ÙÙ</h1>
+    <p>Ø£ÙÙÙØ§ÙÙ Ø¨Ø§ÙÙØ§ÙÙ â ØªØ¬ÙÙØ¹ ÙÙÙØµÙ ÙÙÙ Ø¨ÙØ¯ â ØªØ¹Ø¯ÙÙ Ø§ÙØ£Ø³ÙØ§Ø¡ â Ø³Ø¬Ù ÙØµØ±ÙÙØ§Øª + Ø¬Ø¯ÙÙ Ø£Ø¹ÙØ§Ù</p>
+  </div>
+
+  <div class="summary">
+    <div class="stat"><div class="k">Ø¥Ø¬ÙØ§ÙÙ ÙØµØ±ÙÙØ§Øª Ø§ÙÙÙÙ</div><div class="v" id="sumToday">0 Ø¬.Ù</div></div>
+    <div class="stat"><div class="k">Ø¥Ø¬ÙØ§ÙÙ ÙØ°Ø§ Ø§ÙØ´ÙØ±</div><div class="v" id="sumMonth">0 Ø¬.Ù</div></div>
+    <div class="stat"><div class="k">Ø¹Ø¯Ø¯ Ø¹ÙÙÙØ§Øª Ø§ÙÙØµØ±ÙÙØ§Øª</div><div class="v" id="countExpenses">0</div></div>
+    <div class="stat"><div class="k">Ø§ÙÙÙØ§Ù Ø§ÙÙÙØªÙØ­Ø©</div><div class="v" id="countOpenTasks">0</div></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-page="expensesPage">Ø§ÙÙØµØ±ÙÙØ§Øª</button>
+    <button class="tab" data-page="tasksPage">Ø¬Ø¯ÙÙ Ø§ÙØ£Ø¹ÙØ§Ù</button>
+    <button class="tab" data-page="settingsPage">Ø¥Ø¯Ø§Ø±Ø© Ø§ÙØ¨ÙÙØ¯</button>
+  </div>
+
+  <div id="expensesPage" class="page active">
+    <div class="category-summary" id="mainCategorySummary"></div>
+
+    <div class="grid">
+      <div class="card">
+        <h2 id="expenseFormTitle">Ø¥Ø¶Ø§ÙØ© ÙØµØ±ÙÙ</h2>
+
+        <label for="mainCategory">Ø§ÙØ¨ÙØ¯ Ø§ÙØ±Ø¦ÙØ³Ù</label>
+        <select id="mainCategory"></select>
+
+        <label for="subCategory">Ø§ÙØ¨ÙØ¯ Ø§ÙÙØ±Ø¹Ù</label>
+        <select id="subCategory"></select>
+
+        <div class="inline" style="margin-top:8px">
+          <input id="quickSubName" type="text" placeholder="Ø£Ø¶Ù Ø¨ÙØ¯ ÙØ±Ø¹Ù Ø³Ø±ÙØ¹ ÙÙØ¨ÙØ¯ Ø§ÙØ±Ø¦ÙØ³Ù Ø§ÙÙØ®ØªØ§Ø±" />
+          <button class="secondary" id="addQuickSubBtn" type="button">Ø¥Ø¶Ø§ÙØ©</button>
+        </div>
+
+        <label for="amount">Ø§ÙÙØ¨ÙØº</label>
+        <input id="amount" type="number" min="0" step="0.01" placeholder="ÙØ«Ø§Ù: 500" />
+
+        <label for="desc">Ø§ÙØ¨ÙØ§Ù</label>
+        <input id="desc" type="text" placeholder="ÙØ«Ø§Ù: Ø´Ø±Ø§Ø¡ Ø³ÙØ§Ø¯ / Ø³ÙÙØ§Ø± / ÙÙÙ" />
+
+        <div class="row2">
+          <div>
+            <label for="date">Ø§ÙØªØ§Ø±ÙØ®</label>
+            <input id="date" type="date" />
+          </div>
+          <div>
+            <label for="time">Ø§ÙÙÙØª</label>
+            <input id="time" type="time" />
+          </div>
+        </div>
+
+        <label for="notes">ÙÙØ§Ø­Ø¸Ø§Øª</label>
+        <textarea id="notes" placeholder="Ø§Ø®ØªÙØ§Ø±Ù"></textarea>
+
+        <div class="actions">
+          <button class="primary" id="saveExpenseBtn">Ø­ÙØ¸</button>
+          <button class="ghost" id="resetExpenseBtn" type="button">Ø¬Ø¯ÙØ¯</button>
+        </div>
+
+        <div id="expenseMsg" class="msg"></div>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom:18px">
+          <div class="sectionHead">
+            <h2 style="margin:0">Ø³Ø¬Ù Ø§ÙÙØµØ±ÙÙØ§Øª</h2>
+            <div class="note">ÙÙØªØ±Ø© ÙØ¨Ø­Ø« ÙØªØ¹Ø¯ÙÙ ÙØ­Ø°Ù</div>
+          </div>
+
+          <div class="toolbar">
+            <input id="searchExpense" type="text" placeholder="Ø¨Ø­Ø« ÙÙ Ø§ÙØ¨ÙØ§Ù Ø£Ù Ø§ÙÙÙØ§Ø­Ø¸Ø§Øª" />
+            <select id="filterMain"></select>
+            <select id="filterSub"></select>
+            <input id="fromExpenseDate" type="date" />
+            <input id="toExpenseDate" type="date" />
+            <button class="ghost" id="clearExpenseFilters">ÙØ³Ø­ Ø§ÙÙÙØ§ØªØ±</button>
+          </div>
+
+          <div style="overflow:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ø§ÙØªØ§Ø±ÙØ®</th>
+                  <th>Ø§ÙØ±Ø¦ÙØ³Ù</th>
+                  <th>Ø§ÙÙØ±Ø¹Ù</th>
+                  <th>Ø§ÙÙØ¨ÙØº</th>
+                  <th>Ø§ÙØ¨ÙØ§Ù</th>
+                  <th>ÙÙØ§Ø­Ø¸Ø§Øª</th>
+                  <th>Ø¥Ø¬Ø±Ø§Ø¡Ø§Øª</th>
+                </tr>
+              </thead>
+              <tbody id="expensesTbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tasksPage" class="page">
+    <div class="grid">
+      <div class="card">
+        <h2 id="taskFormTitle">Ø¥Ø¶Ø§ÙØ© ÙÙÙØ©</h2>
+
+        <label for="taskTitle">Ø¹ÙÙØ§Ù Ø§ÙÙÙÙØ©</label>
+        <input id="taskTitle" type="text" placeholder="ÙØ«Ø§Ù: ÙØªØ§Ø¨Ø¹Ø© Ø§ÙØ¹ÙØ§ÙØ© Ø£Ù Ø´Ø±Ø§Ø¡ Ø§ÙØ³ÙØ§Ø¯" />
+
+        <div class="row2">
+          <div>
+            <label for="taskMainCategory">Ø§ÙØ¨ÙØ¯</label>
+            <select id="taskMainCategory"></select>
+          </div>
+          <div>
+            <label for="taskStatus">Ø§ÙØ­Ø§ÙØ©</label>
+            <select id="taskStatus">
+              <option value="ÙÙØªÙØ­Ø©">ÙÙØªÙØ­Ø©</option>
+              <option value="Ø¬Ø§Ø±Ù Ø§ÙØªÙÙÙØ°">Ø¬Ø§Ø±Ù Ø§ÙØªÙÙÙØ°</option>
+              <option value="ØªÙØª">ØªÙØª</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div>
+            <label for="taskDate">Ø§ÙØªØ§Ø±ÙØ®</label>
+            <input id="taskDate" type="date" />
+          </div>
+          <div>
+            <label for="taskPriority">Ø§ÙØ£ÙÙÙÙØ©</label>
+            <select id="taskPriority">
+              <option value="Ø¹Ø§Ø¯ÙØ©">Ø¹Ø§Ø¯ÙØ©</option>
+              <option value="ÙÙÙØ©">ÙÙÙØ©</option>
+              <option value="Ø¹Ø§Ø¬ÙØ©">Ø¹Ø§Ø¬ÙØ©</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="taskNotes">ÙÙØ§Ø­Ø¸Ø§Øª</label>
+        <textarea id="taskNotes" placeholder="ØªÙØ§ØµÙÙ Ø§ÙÙÙÙØ©"></textarea>
+
+        <div class="actions">
+          <button class="primary" id="saveTaskBtn">Ø­ÙØ¸</button>
+          <button class="ghost" id="resetTaskBtn" type="button">Ø¬Ø¯ÙØ¯</button>
+        </div>
+
+        <div id="taskMsg" class="msg"></div>
+      </div>
+
+      <div class="card">
+        <div class="sectionHead">
+          <h2 style="margin:0">Ø¬Ø¯ÙÙ Ø§ÙØ£Ø¹ÙØ§Ù</h2>
+          <div class="note">ØªÙØ¸ÙÙ Ø§ÙØ´ØºÙ Ø§ÙÙÙÙÙ</div>
+        </div>
+
+        <div class="toolbar" style="grid-template-columns:1.2fr .9fr .9fr .8fr auto auto">
+          <input id="searchTask" type="text" placeholder="Ø¨Ø­Ø« ÙÙ Ø¹ÙÙØ§Ù Ø§ÙÙÙÙØ© Ø£Ù Ø§ÙÙÙØ§Ø­Ø¸Ø§Øª" />
+          <select id="filterTaskMain"></select>
+          <select id="filterTaskStatus">
+            <option value="Ø§ÙÙÙ">ÙÙ Ø§ÙØ­Ø§ÙØ§Øª</option>
+            <option value="ÙÙØªÙØ­Ø©">ÙÙØªÙØ­Ø©</option>
+            <option value="Ø¬Ø§Ø±Ù Ø§ÙØªÙÙÙØ°">Ø¬Ø§Ø±Ù Ø§ÙØªÙÙÙØ°</option>
+            <option value="ØªÙØª">ØªÙØª</option>
+          </select>
+          <input id="taskFilterDate" type="date" />
+          <button class="ghost" id="clearTaskFilters">ÙØ³Ø­ Ø§ÙÙÙØ§ØªØ±</button>
+          <button class="success" id="showTodayTasks">ÙÙØ§Ù Ø§ÙÙÙÙ</button>
+        </div>
+
+        <div style="overflow:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Ø§ÙØªØ§Ø±ÙØ®</th>
+                <th>Ø§ÙÙÙÙØ©</th>
+                <th>Ø§ÙØ¨ÙØ¯</th>
+                <th>Ø§ÙØ­Ø§ÙØ©</th>
+                <th>Ø§ÙØ£ÙÙÙÙØ©</th>
+                <th>ÙÙØ§Ø­Ø¸Ø§Øª</th>
+                <th>Ø¥Ø¬Ø±Ø§Ø¡Ø§Øª</th>
+              </tr>
+            </thead>
+            <tbody id="tasksTbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="settingsPage" class="page">
+    <div class="grid">
+      <div class="card">
+        <h2>Ø¥Ø¶Ø§ÙØ© Ø¨ÙØ¯ Ø±Ø¦ÙØ³Ù</h2>
+        <div class="inline">
+          <input id="newMainName" type="text" placeholder="ÙØ«Ø§Ù: ÙØµØ±ÙÙØ§Øª ÙÙÙÙØ© / Ø£Ø³ÙØ¯Ø© / Ø¹ÙØ§ÙØ© / ÙØ¯ÙÙÙÙØ©" />
+          <button class="primary" id="addMainBtn">Ø¥Ø¶Ø§ÙØ©</button>
+        </div>
+        <div id="settingsMsg" class="msg"></div>
+
+        <h3 style="margin-top:24px">Ø¥Ø¶Ø§ÙØ© Ø¨ÙØ¯ ÙØ±Ø¹Ù</h3>
+        <label for="settingsMainSelect">Ø§Ø®ØªØ± Ø§ÙØ¨ÙØ¯ Ø§ÙØ±Ø¦ÙØ³Ù</label>
+        <select id="settingsMainSelect"></select>
+        <div class="inline" style="margin-top:8px">
+          <input id="newSubName" type="text" placeholder="ÙØ«Ø§Ù: Ø¯ÙØ²Ù / ÙØªØ±Ø§Øª / Ø³ÙÙØ© / Ø£Ø¬Ø±Ø© ÙÙÙÙØ©" />
+          <button class="secondary" id="addSubBtn">Ø¥Ø¶Ø§ÙØ©</button>
+        </div>
+
+        <div class="footer-note">
+          ÙØªØºÙÙØ± Ø§ÙØ§Ø³Ù: Ø§ÙØªØ¨ Ø§ÙØ§Ø³Ù Ø§ÙØ¬Ø¯ÙØ¯ Ø«Ù Ø§Ø¶ØºØ· Ø­ÙØ¸ Ø§ÙØ§Ø³Ù.  
+          ÙÙ Ø¨ÙØ¯ Ø±Ø¦ÙØ³Ù ÙØªÙ ØªØ¬ÙÙØ¹Ù ÙÙØ­Ø¯Ù ØªÙÙØ§Ø¦ÙÙØ§ ÙÙ Ø£Ø¹ÙÙ ØµÙØ­Ø© Ø§ÙÙØµØ±ÙÙØ§Øª.
+        </div>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom:18px">
+          <div class="sectionHead">
+            <h2 style="margin:0">Ø§ÙØ¨ÙÙØ¯ Ø§ÙØ±Ø¦ÙØ³ÙØ© ÙØ§ÙÙØ±Ø¹ÙØ©</h2>
+            <div class="note">ØªØ¹Ø¯ÙÙ Ø­Ø± Ø¨Ø§ÙÙØ§ÙÙ</div>
+          </div>
+          <div id="categoriesBox"></div>
+        </div>
+
+        <div class="card">
+          <div class="sectionHead">
+            <h2 style="margin:0">ÙØ³Ø®Ø© Ø§Ø­ØªÙØ§Ø·ÙØ©</h2>
+            <div class="note">ÙÙØ­ÙØ§Ø¸ Ø¹ÙÙ Ø¨ÙØ§ÙØ§ØªÙ</div>
+          </div>
+          <div class="actions">
+            <button class="ghost" id="exportAllBtn">ØªØµØ¯ÙØ± ÙØ³Ø®Ø© Ø§Ø­ØªÙØ§Ø·ÙØ©</button>
+            <label class="secondary" style="display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:11px 15px;border-radius:12px;">
+              Ø§Ø³ØªÙØ±Ø§Ø¯ ÙØ³Ø®Ø©
+              <input id="importAllFile" type="file" accept=".json" style="display:none" />
+            </label>
+            <button class="danger" id="wipeAllBtn">Ø­Ø°Ù ÙÙ Ø§ÙØ¨ÙØ§ÙØ§Øª</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function uid(){ return Math.random().toString(36).slice(2) + Date.now().toString(36); }
+
+const STORAGE_KEY = 'farm_work_manager_offline_v3';
+const defaultData = {
+  categories: [
+    { id: uid(), name: 'ÙØµØ±ÙÙØ§Øª ÙÙÙÙØ©', sub: [{id: uid(), name: 'Ø¹Ø§Ù'}] },
+    { id: uid(), name: 'Ø£Ø³ÙØ¯Ø©', sub: [{id: uid(), name: 'Ø¹Ø§Ù'}] },
+    { id: uid(), name: 'Ø¹ÙØ§ÙØ©', sub: [{id: uid(), name: 'Ø¹Ø§Ù'}] },
+    { id: uid(), name: 'ÙØ¯ÙÙÙÙØ©', sub: [{id: uid(), name: 'Ø¹Ø§Ù'}] }
+  ],
+  expenses: [],
+  tasks: []
+};
+
+let state = loadState();
+let editingExpenseId = null;
+let editingTaskId = null;
+
+function el(id){ return document.getElementById(id); }
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+function nowTimeStr(){
+  const d = new Date();
+  return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+}
+function money(n){ return Number(n||0).toLocaleString('ar-EG',{maximumFractionDigits:3}) + ' Ø¬.Ù'; }
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultData));
+      return JSON.parse(JSON.stringify(defaultData));
+    }
+    const parsed = JSON.parse(raw);
+    parsed.categories = Array.isArray(parsed.categories) && parsed.categories.length ? parsed.categories : JSON.parse(JSON.stringify(defaultData.categories));
+    parsed.expenses = Array.isArray(parsed.expenses) ? parsed.expenses : [];
+    parsed.tasks = Array.isArray(parsed.tasks) ? parsed.tasks : [];
+    return parsed;
+  }catch{
+    return JSON.parse(JSON.stringify(defaultData));
+  }
+}
+function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+function showMsg(id, text, ok=true){
+  const m = el(id);
+  m.textContent = text;
+  m.className = 'msg ' + (ok ? 'ok' : 'err');
+  setTimeout(()=>{ m.className='msg'; m.textContent=''; }, 2500);
+}
+function esc(s){
+  return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+}
+
+function renderTabs(){
+  document.querySelectorAll('.tab').forEach(btn=>{
+    btn.onclick = ()=>{
+      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+      btn.classList.add('active');
+      el(btn.dataset.page).classList.add('active');
+    };
+  });
+}
+
+function fillSelect(selectId, items){
+  el(selectId).innerHTML = items.map(i=>`<option value="${i.value}">${i.label}</option>`).join('');
+}
+function getCategoryById(id){ return state.categories.find(c=>c.id===id); }
+function getSubById(cat, subId){ return (cat?.sub || []).find(s=>s.id===subId); }
+
+function renderCategorySelects(){
+  if(!state.categories.length){
+    state.categories = JSON.parse(JSON.stringify(defaultData.categories));
+  }
+  fillSelect('mainCategory', state.categories.map(c=>({value:c.id,label:c.name})));
+  fillSelect('taskMainCategory', [{value:'',label:'Ø¨Ø¯ÙÙ'}].concat(state.categories.map(c=>({value:c.id,label:c.name}))));
+  fillSelect('settingsMainSelect', state.categories.map(c=>({value:c.id,label:c.name})));
+  fillSelect('filterMain', [{value:'Ø§ÙÙÙ',label:'ÙÙ Ø§ÙØ¨ÙÙØ¯ Ø§ÙØ±Ø¦ÙØ³ÙØ©'}].concat(state.categories.map(c=>({value:c.id,label:c.name}))));
+  fillSelect('filterTaskMain', [{value:'Ø§ÙÙÙ',label:'ÙÙ Ø§ÙØ¨ÙÙØ¯'}].concat(state.categories.map(c=>({value:c.id,label:c.name}))));
+  updateSubCategorySelect();
+  updateFilterSubSelect();
+}
+function updateSubCategorySelect(){
+  const cat = getCategoryById(el('mainCategory').value) || state.categories[0];
+  const subs = (cat?.sub || []).length ? cat.sub : [{id:'', name:'Ø¹Ø§Ù'}];
+  fillSelect('subCategory', subs.map(s=>({value:s.id,label:s.name})));
+}
+function updateFilterSubSelect(){
+  const main = el('filterMain').value;
+  let items = [{value:'Ø§ÙÙÙ', label:'ÙÙ Ø§ÙØ¨ÙÙØ¯ Ø§ÙÙØ±Ø¹ÙØ©'}];
+  if(main === 'Ø§ÙÙÙ'){
+    state.categories.forEach(c=>c.sub.forEach(s=>items.push({value:s.id,label:`${c.name} / ${s.name}`})));
+  } else {
+    const cat = getCategoryById(main);
+    (cat?.sub || []).forEach(s=>items.push({value:s.id,label:s.name}));
+  }
+  fillSelect('filterSub', items);
+}
+
+function resetExpenseForm(){
+  editingExpenseId = null;
+  el('expenseFormTitle').textContent = 'Ø¥Ø¶Ø§ÙØ© ÙØµØ±ÙÙ';
+  if(state.categories[0]) el('mainCategory').value = state.categories[0].id;
+  updateSubCategorySelect();
+  el('amount').value = '';
+  el('desc').value = '';
+  el('date').value = todayStr();
+  el('time').value = nowTimeStr();
+  el('notes').value = '';
+  el('saveExpenseBtn').textContent = 'Ø­ÙØ¸';
+}
+function resetTaskForm(){
+  editingTaskId = null;
+  el('taskFormTitle').textContent = 'Ø¥Ø¶Ø§ÙØ© ÙÙÙØ©';
+  el('taskTitle').value = '';
+  el('taskDate').value = todayStr();
+  el('taskStatus').value = 'ÙÙØªÙØ­Ø©';
+  el('taskPriority').value = 'Ø¹Ø§Ø¯ÙØ©';
+  el('taskNotes').value = '';
+  el('taskMainCategory').value = '';
+  el('saveTaskBtn').textContent = 'Ø­ÙØ¸';
+}
+
+function validateExpense(){
+  if(!(parseFloat(el('amount').value) > 0)) return 'Ø§ÙÙØ¨ÙØº ÙØ§Ø²Ù ÙÙÙÙ Ø£ÙØ¨Ø± ÙÙ ØµÙØ±';
+  if(!el('desc').value.trim()) return 'Ø§ÙØªØ¨ Ø§ÙØ¨ÙØ§Ù';
+  if(!el('date').value) return 'Ø§Ø®ØªØ± Ø§ÙØªØ§Ø±ÙØ®';
+  return '';
+}
+function saveExpense(){
+  const err = validateExpense();
+  if(err){ showMsg('expenseMsg', err, false); return; }
+  const record = {
+    id: editingExpenseId || uid(),
+    mainCategoryId: el('mainCategory').value,
+    subCategoryId: el('subCategory').value,
+    amount: Number(el('amount').value),
+    desc: el('desc').value.trim(),
+    date: el('date').value,
+    time: el('time').value || '00:00',
+    notes: el('notes').value.trim(),
+    updatedAt: new Date().toISOString()
+  };
+  if(editingExpenseId){
+    const i = state.expenses.findIndex(x=>x.id===editingExpenseId);
+    if(i>-1){ record.createdAt = state.expenses[i].createdAt || record.updatedAt; state.expenses[i]=record; }
+    showMsg('expenseMsg', 'ØªÙ ØªØ¹Ø¯ÙÙ Ø§ÙÙØµØ±ÙÙ');
+  } else {
+    record.createdAt = record.updatedAt;
+    state.expenses.unshift(record);
+    showMsg('expenseMsg', 'ØªÙ Ø­ÙØ¸ Ø§ÙÙØµØ±ÙÙ');
+  }
+  saveState(); resetExpenseForm(); renderAll();
+}
+function editExpense(id){
+  const x = state.expenses.find(e=>e.id===id);
+  if(!x) return;
+  editingExpenseId = id;
+  el('expenseFormTitle').textContent = 'ØªØ¹Ø¯ÙÙ ÙØµØ±ÙÙ';
+  el('mainCategory').value = x.mainCategoryId;
+  updateSubCategorySelect();
+  el('subCategory').value = x.subCategoryId;
+  el('amount').value = x.amount;
+  el('desc').value = x.desc;
+  el('date').value = x.date;
+  el('time').value = x.time || '00:00';
+  el('notes').value = x.notes || '';
+  el('saveExpenseBtn').textContent = 'Ø­ÙØ¸ Ø§ÙØªØ¹Ø¯ÙÙ';
+  document.querySelector('[data-page="expensesPage"]').click();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function deleteExpense(id){
+  if(!confirm('Ø­Ø°Ù ÙØ°Ø§ Ø§ÙÙØµØ±ÙÙØ')) return;
+  state.expenses = state.expenses.filter(x=>x.id!==id);
+  saveState(); renderAll();
+}
+
+function validateTask(){
+  if(!el('taskTitle').value.trim()) return 'Ø§ÙØªØ¨ Ø¹ÙÙØ§Ù Ø§ÙÙÙÙØ©';
+  if(!el('taskDate').value) return 'Ø§Ø®ØªØ± Ø§ÙØªØ§Ø±ÙØ®';
+  return '';
+}
+function saveTask(){
+  const err = validateTask();
+  if(err){ showMsg('taskMsg', err, false); return; }
+  const record = {
+    id: editingTaskId || uid(),
+    title: el('taskTitle').value.trim(),
+    mainCategoryId: el('taskMainCategory').value,
+    status: el('taskStatus').value,
+    priority: el('taskPriority').value,
+    date: el('taskDate').value,
+    notes: el('taskNotes').value.trim(),
+    updatedAt: new Date().toISOString()
+  };
+  if(editingTaskId){
+    const i = state.tasks.findIndex(x=>x.id===editingTaskId);
+    if(i>-1){ record.createdAt = state.tasks[i].createdAt || record.updatedAt; state.tasks[i]=record; }
+    showMsg('taskMsg', 'ØªÙ ØªØ¹Ø¯ÙÙ Ø§ÙÙÙÙØ©');
+  } else {
+    record.createdAt = record.updatedAt;
+    state.tasks.unshift(record);
+    showMsg('taskMsg', 'ØªÙ Ø­ÙØ¸ Ø§ÙÙÙÙØ©');
+  }
+  saveState(); resetTaskForm(); renderAll();
+}
+function editTask(id){
+  const x = state.tasks.find(t=>t.id===id);
+  if(!x) return;
+  editingTaskId = id;
+  el('taskFormTitle').textContent = 'ØªØ¹Ø¯ÙÙ ÙÙÙØ©';
+  el('taskTitle').value = x.title;
+  el('taskMainCategory').value = x.mainCategoryId || '';
+  el('taskStatus').value = x.status;
+  el('taskPriority').value = x.priority;
+  el('taskDate').value = x.date;
+  el('taskNotes').value = x.notes || '';
+  el('saveTaskBtn').textContent = 'Ø­ÙØ¸ Ø§ÙØªØ¹Ø¯ÙÙ';
+  document.querySelector('[data-page="tasksPage"]').click();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function deleteTask(id){
+  if(!confirm('Ø­Ø°Ù ÙØ°Ù Ø§ÙÙÙÙØ©Ø')) return;
+  state.tasks = state.tasks.filter(x=>x.id!==id);
+  saveState(); renderAll();
+}
+function markTaskDone(id){
+  const x = state.tasks.find(t=>t.id===id);
+  if(!x) return;
+  x.status = 'ØªÙØª';
+  x.updatedAt = new Date().toISOString();
+  saveState(); renderAll();
+}
+function statusClass(status){
+  if(status==='ØªÙØª') return 'pill-status-done';
+  if(status==='Ø¬Ø§Ø±Ù Ø§ÙØªÙÙÙØ°') return 'pill-status-progress';
+  return 'pill-status-open';
+}
+
+function renderMainCategorySummary(){
+  const box = el('mainCategorySummary');
+  box.innerHTML = state.categories.map(c=>{
+    const total = state.expenses.filter(x=>x.mainCategoryId===c.id).reduce((s,x)=>s+Number(x.amount||0),0);
+    return `<div class="stat"><div class="k">${esc(c.name)}</div><div class="v">${money(total)}</div></div>`;
+  }).join('');
+}
+
+function renderExpensesTable(){
+  const q = el('searchExpense').value.trim().toLowerCase();
+  const fMain = el('filterMain').value;
+  const fSub = el('filterSub').value;
+  const from = el('fromExpenseDate').value;
+  const to = el('toExpenseDate').value;
+
+  const rows = [...state.expenses].filter(x=>{
+    if(fMain!=='Ø§ÙÙÙ' && x.mainCategoryId!==fMain) return false;
+    if(fSub!=='Ø§ÙÙÙ' && x.subCategoryId!==fSub) return false;
+    if(from && x.date<from) return false;
+    if(to && x.date>to) return false;
+    if(q){
+      const hay = `${x.desc} ${x.notes || ''}`.toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  }).sort((a,b)=>(b.date+'T'+(b.time||'00:00')).localeCompare(a.date+'T'+(a.time||'00:00')));
+
+  const tbody = el('expensesTbody');
+  if(!rows.length){
+    tbody.innerHTML = `<tr><td colspan="7" class="empty">ÙØ§ ØªÙØ¬Ø¯ Ø¨ÙØ§ÙØ§Øª</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = rows.map(x=>{
+    const cat = getCategoryById(x.mainCategoryId);
+    const sub = getSubById(cat, x.subCategoryId);
+    return `<tr>
+      <td>${x.date}<div class="small muted">${x.time || ''}</div></td>
+      <td><span class="pill pill-main">${cat?.name || 'â'}</span></td>
+      <td><span class="pill pill-sub">${sub?.name || 'â'}</span></td>
+      <td>${money(x.amount)}</td>
+      <td>${esc(x.desc)}</td>
+      <td>${x.notes ? esc(x.notes) : '<span class="muted">â</span>'}</td>
+      <td>
+        <div class="actions" style="margin:0">
+          <button class="secondary" onclick="editExpense('${x.id}')">ØªØ¹Ø¯ÙÙ</button>
+          <button class="danger" onclick="deleteExpense('${x.id}')">Ø­Ø°Ù</button>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function renderTasksTable(){
+  const q = el('searchTask').value.trim().toLowerCase();
+  const fMain = el('filterTaskMain').value;
+  const fStatus = el('filterTaskStatus').value;
+  const fDate = el('taskFilterDate').value;
+
+  const rows = [...state.tasks].filter(x=>{
+    if(fMain!=='Ø§ÙÙÙ' && x.mainCategoryId!==fMain) return false;
+    if(fStatus!=='Ø§ÙÙÙ' && x.status!==fStatus) return false;
+    if(fDate && x.date!==fDate) return false;
+    if(q){
+      const hay = `${x.title} ${x.notes || ''}`.toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  }).sort((a,b)=>b.date.localeCompare(a.date));
+
+  const tbody = el('tasksTbody');
+  if(!rows.length){
+    tbody.innerHTML = `<tr><td colspan="7" class="empty">ÙØ§ ØªÙØ¬Ø¯ ÙÙØ§Ù</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = rows.map(x=>{
+    const cat = getCategoryById(x.mainCategoryId);
+    return `<tr>
+      <td>${x.date}</td>
+      <td>${esc(x.title)}</td>
+      <td>${cat ? `<span class="pill pill-main">${cat.name}</span>` : '<span class="muted">â</span>'}</td>
+      <td><span class="pill ${statusClass(x.status)}">${x.status}</span></td>
+      <td>${esc(x.priority)}</td>
+      <td>${x.notes ? esc(x.notes) : '<span class="muted">â</span>'}</td>
+      <td>
+        <div class="actions" style="margin:0">
+          <button class="secondary" onclick="editTask('${x.id}')">ØªØ¹Ø¯ÙÙ</button>
+          <button class="success" onclick="markTaskDone('${x.id}')">ØªÙØª</button>
+          <button class="danger" onclick="deleteTask('${x.id}')">Ø­Ø°Ù</button>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function renderCategoriesBox(){
+  const box = el('categoriesBox');
+  box.innerHTML = state.categories.map(c=>`
+    <div class="card" style="margin-bottom:12px;padding:12px">
+      <div class="sectionHead">
+        <div class="inline" style="width:100%">
+          <input value="${esc(c.name)}" id="main_name_${c.id}" />
+          <button class="secondary" onclick="renameMain('${c.id}')">Ø­ÙØ¸ Ø§ÙØ§Ø³Ù</button>
+          <button class="danger" onclick="deleteMain('${c.id}')">Ø­Ø°Ù</button>
+        </div>
+      </div>
+      <div class="chips">
+        ${(c.sub||[]).map(s=>`
+          <div class="chip">
+            <input value="${esc(s.name)}" id="sub_name_${s.id}" style="width:140px;padding:8px 10px" />
+            <button class="secondary" onclick="renameSub('${c.id}','${s.id}')">Ø­ÙØ¸</button>
+            <button class="danger" onclick="deleteSub('${c.id}','${s.id}')">Ã</button>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function addMain(){
+  const name = el('newMainName').value.trim();
+  if(!name){ showMsg('settingsMsg','Ø§ÙØªØ¨ Ø§Ø³Ù Ø§ÙØ¨ÙØ¯ Ø§ÙØ±Ø¦ÙØ³Ù', false); return; }
+  state.categories.push({id:uid(), name, sub:[{id:uid(), name:'Ø¹Ø§Ù'}]});
+  el('newMainName').value = '';
+  saveState(); renderAll();
+  showMsg('settingsMsg','ØªÙ Ø¥Ø¶Ø§ÙØ© Ø§ÙØ¨ÙØ¯ Ø§ÙØ±Ø¦ÙØ³Ù');
+}
+function addSub(){
+  const mainId = el('settingsMainSelect').value;
+  const name = el('newSubName').value.trim();
+  const cat = getCategoryById(mainId);
+  if(!cat){ showMsg('settingsMsg','Ø§Ø®ØªØ± Ø¨ÙØ¯ÙØ§ Ø±Ø¦ÙØ³ÙÙØ§', false); return; }
+  if(!name){ showMsg('settingsMsg','Ø§ÙØªØ¨ Ø§Ø³Ù Ø§ÙØ¨ÙØ¯ Ø§ÙÙØ±Ø¹Ù', false); return; }
+  cat.sub.push({id:uid(), name});
+  el('newSubName').value = '';
+  saveState(); renderAll();
+  showMsg('settingsMsg','ØªÙ Ø¥Ø¶Ø§ÙØ© Ø§ÙØ¨ÙØ¯ Ø§ÙÙØ±Ø¹Ù');
+}
+function addQuickSub(){
+  const mainId = el('mainCategory').value;
+  const name = el('quickSubName').value.trim();
+  const cat = getCategoryById(mainId);
+  if(!cat){ showMsg('expenseMsg','Ø§Ø®ØªØ± Ø¨ÙØ¯ÙØ§ Ø±Ø¦ÙØ³ÙÙØ§ Ø£ÙÙÙØ§', false); return; }
+  if(!name){ showMsg('expenseMsg','Ø§ÙØªØ¨ Ø§Ø³Ù Ø§ÙØ¨ÙØ¯ Ø§ÙÙØ±Ø¹Ù', false); return; }
+  const s = {id:uid(), name};
+  cat.sub.push(s);
+  el('quickSubName').value = '';
+  saveState(); renderAll();
+  el('mainCategory').value = mainId;
+  updateSubCategorySelect();
+  el('subCategory').value = s.id;
+  showMsg('expenseMsg','ØªÙ Ø¥Ø¶Ø§ÙØ© Ø§ÙØ¨ÙØ¯ Ø§ÙÙØ±Ø¹Ù');
+}
+function renameMain(id){
+  const input = el(`main_name_${id}`);
+  const name = input.value.trim();
+  if(!name){ alert('Ø§ÙØªØ¨ Ø§Ø³ÙÙØ§ ØµØ­ÙØ­ÙØ§'); return; }
+  const cat = getCategoryById(id);
+  cat.name = name;
+  saveState(); renderAll();
+}
+function deleteMain(id){
+  const cat = getCategoryById(id);
+  if(!confirm(`Ø­Ø°Ù Ø§ÙØ¨ÙØ¯ Ø§ÙØ±Ø¦ÙØ³Ù "${cat?.name}" ÙÙÙ Ø¨ÙØ§ÙØ§ØªÙØ`)) return;
+  state.categories = state.categories.filter(c=>c.id!==id);
+  state.expenses = state.expenses.filter(x=>x.mainCategoryId!==id);
+  state.tasks = state.tasks.filter(x=>x.mainCategoryId!==id);
+  if(!state.categories.length){
+    state.categories = JSON.parse(JSON.stringify(defaultData.categories));
+  }
+  saveState(); renderAll();
+}
+function renameSub(mainId, subId){
+  const input = el(`sub_name_${subId}`);
+  const name = input.value.trim();
+  if(!name){ alert('Ø§ÙØªØ¨ Ø§Ø³ÙÙØ§ ØµØ­ÙØ­ÙØ§'); return; }
+  const sub = getSubById(getCategoryById(mainId), subId);
+  sub.name = name;
+  saveState(); renderAll();
+}
+function deleteSub(mainId, subId){
+  const cat = getCategoryById(mainId);
+  if((cat.sub||[]).length <= 1){ alert('ÙØ§ ÙÙÙÙ Ø­Ø°Ù Ø¢Ø®Ø± Ø¨ÙØ¯ ÙØ±Ø¹Ù'); return; }
+  if(!confirm('Ø­Ø°Ù ÙØ°Ø§ Ø§ÙØ¨ÙØ¯ Ø§ÙÙØ±Ø¹ÙØ')) return;
+  cat.sub = cat.sub.filter(s=>s.id!==subId);
+  state.expenses = state.expenses.filter(x=>x.subCategoryId!==subId);
+  saveState(); renderAll();
+}
+
+function exportAll(){
+  const blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'farm-manager-backup-' + todayStr() + '.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function importAll(file){
+  const reader = new FileReader();
+  reader.onload = e=>{
+    try{
+      const data = JSON.parse(e.target.result);
+      if(!data.categories || !Array.isArray(data.categories)) throw new Error();
+      if(!confirm('Ø³ÙØªÙ Ø§Ø³ØªØ¨Ø¯Ø§Ù Ø§ÙØ¨ÙØ§ÙØ§Øª Ø§ÙØ­Ø§ÙÙØ©. ÙØªØ§Ø¨Ø¹Ø©Ø')) return;
+      state = {
+        categories: Array.isArray(data.categories) ? data.categories : [],
+        expenses: Array.isArray(data.expenses) ? data.expenses : [],
+        tasks: Array.isArray(data.tasks) ? data.tasks : []
+      };
+      saveState(); renderAll();
+      showMsg('settingsMsg','ØªÙ Ø§Ø³ØªÙØ±Ø§Ø¯ Ø§ÙÙØ³Ø®Ø© Ø¨ÙØ¬Ø§Ø­');
+    }catch{
+      showMsg('settingsMsg','ÙÙÙ ØºÙØ± ØµØ­ÙØ­', false);
+    }
+  };
+  reader.readAsText(file,'utf-8');
+}
+function wipeAll(){
+  if(!confirm('ÙÙ Ø£ÙØª ÙØªØ£ÙØ¯ ÙÙ Ø­Ø°Ù ÙÙ Ø§ÙØ¨ÙØ§ÙØ§ØªØ')) return;
+  if(!confirm('ØªØ£ÙÙØ¯ Ø£Ø®ÙØ±: Ø³ÙØªÙ Ø­Ø°Ù ÙÙ Ø´ÙØ¡ ÙÙØ§Ø¦ÙÙØ§.')) return;
+  state = JSON.parse(JSON.stringify(defaultData));
+  saveState(); resetExpenseForm(); resetTaskForm(); renderAll();
+}
+
+function renderSummary(){
+  const today = todayStr();
+  const ym = today.slice(0,7);
+  const todaySum = state.expenses.filter(x=>x.date===today).reduce((s,x)=>s+Number(x.amount||0),0);
+  const monthSum = state.expenses.filter(x=>x.date.slice(0,7)===ym).reduce((s,x)=>s+Number(x.amount||0),0);
+  el('sumToday').textContent = money(todaySum);
+  el('sumMonth').textContent = money(monthSum);
+  el('countExpenses').textContent = state.expenses.length.toLocaleString('ar-EG');
+  el('countOpenTasks').textContent = state.tasks.filter(t=>t.status!=='ØªÙØª').length.toLocaleString('ar-EG');
+}
+function clearExpenseFilters(){
+  el('searchExpense').value=''; el('filterMain').value='Ø§ÙÙÙ'; updateFilterSubSelect(); el('filterSub').value='Ø§ÙÙÙ';
+  el('fromExpenseDate').value=''; el('toExpenseDate').value=''; renderExpensesTable();
+}
+function clearTaskFilters(){
+  el('searchTask').value=''; el('filterTaskMain').value='Ø§ÙÙÙ'; el('filterTaskStatus').value='Ø§ÙÙÙ'; el('taskFilterDate').value=''; renderTasksTable();
+}
+function showTodayTasks(){
+  el('taskFilterDate').value = todayStr();
+  renderTasksTable();
+}
+
+function bind(){
+  renderTabs();
+  el('mainCategory').addEventListener('change', updateSubCategorySelect);
+  el('filterMain').addEventListener('change', ()=>{ updateFilterSubSelect(); renderExpensesTable(); });
+  el('saveExpenseBtn').addEventListener('click', saveExpense);
+  el('resetExpenseBtn').addEventListener('click', resetExpenseForm);
+  el('searchExpense').addEventListener('input', renderExpensesTable);
+  el('filterSub').addEventListener('change', renderExpensesTable);
+  el('fromExpenseDate').addEventListener('change', renderExpensesTable);
+  el('toExpenseDate').addEventListener('change', renderExpensesTable);
+  el('clearExpenseFilters').addEventListener('click', clearExpenseFilters);
+  el('addQuickSubBtn').addEventListener('click', addQuickSub);
+
+  el('saveTaskBtn').addEventListener('click', saveTask);
+  el('resetTaskBtn').addEventListener('click', resetTaskForm);
+  el('searchTask').addEventListener('input', renderTasksTable);
+  el('filterTaskMain').addEventListener('change', renderTasksTable);
+  el('filterTaskStatus').addEventListener('change', renderTasksTable);
+  el('taskFilterDate').addEventListener('change', renderTasksTable);
+  el('clearTaskFilters').addEventListener('click', clearTaskFilters);
+  el('showTodayTasks').addEventListener('click', showTodayTasks);
+
+  el('addMainBtn').addEventListener('click', addMain);
+  el('addSubBtn').addEventListener('click', addSub);
+  el('exportAllBtn').addEventListener('click', exportAll);
+  el('wipeAllBtn').addEventListener('click', wipeAll);
+  el('importAllFile').addEventListener('change', e=>{
+    const f = e.target.files[0];
+    if(f) importAll(f);
+    e.target.value='';
+  });
+}
+
+function renderAll(){
+  renderCategorySelects();
+  renderSummary();
+  renderMainCategorySummary();
+  renderExpensesTable();
+  renderTasksTable();
+  renderCategoriesBox();
+}
+
+window.editExpense = editExpense;
+window.deleteExpense = deleteExpense;
+window.editTask = editTask;
+window.deleteTask = deleteTask;
+window.markTaskDone = markTaskDone;
+window.renameMain = renameMain;
+window.deleteMain = deleteMain;
+window.renameSub = renameSub;
+window.deleteSub = deleteSub;
+
+bind();
+resetExpenseForm();
+resetTaskForm();
+renderAll();
+</script>
+</body>
+</html>
