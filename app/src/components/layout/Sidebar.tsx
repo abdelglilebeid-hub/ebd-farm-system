@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import {
   LayoutDashboard, Receipt, ShoppingCart, CreditCard,
   Palmtree, Sprout, ClipboardList, Settings, Bell,
-  LogOut, Menu, X, ChevronDown, Users, MessageCircle
+  LogOut, Menu, X, ChevronDown, Users, MessageCircle, Wallet
 } from 'lucide-react';
 
 const navItems = [
@@ -30,6 +30,7 @@ const navItems = [
       { href: '/operations/tasks', label: 'المهام', icon: ClipboardList },
     ]
   },
+  { href: '/finance', label: 'إدارة مالية', icon: Wallet, roles: ['owner', 'accountant', 'manager'] },
   { href: '/chat', label: 'عبدالجليل - المساعد', icon: MessageCircle, roles: ['owner', 'accountant', 'manager', 'worker'] },
   { href: '/settings', label: 'الإعدادات', icon: Settings, roles: ['owner'] },
 ];
@@ -183,4 +184,4 @@ export default function Sidebar() {
       </aside>
     </>
   );
-}
+        }
